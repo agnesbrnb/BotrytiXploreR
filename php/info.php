@@ -9,14 +9,14 @@
 
     <div id="entete">
      <a href="Accueil.php">
-       <img src="./img/logo_log" alt="logo logiciel" height="80" width="320"/></a>
+       <img src="../img/logo_log" alt="logo logiciel" height="80" width="320"/></a>
     </div>
 
     <div id="menu">
 
       <div id="bandeau">
-        <a href="">Le gène<img class="bulle gene" src="./img/bulle_gene.png" alt="Gène" /></a>
-        <a href="">La protéine<img class="bulle prot" src="./img/bulle_prot.png" alt="Protéine" /></a>
+        <a href="">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
+        <a href="">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
       </div>
 
       <hr>
@@ -36,7 +36,7 @@
     </div>
 
     <div id="retour">
-      <img src="./img/logo.png" alt="logo auteur" height="120" width="120" />
+      <img src="../img/logo.png" alt="logo auteur" height="120" width="120" />
     </div>
 
   </body>

@@ -1,7 +1,7 @@
 html {
   margin:0;
   padding:0;
-  background: url(./img/adn.jpg) no-repeat center fixed;
+  background: url(../img/adn.jpg) no-repeat center fixed;
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
 }
@@ -11,7 +11,7 @@ h1 {color: white; margin-left: 10px;}
 #entete{ position: absolute; margin-left: 10px; top: 10px;}
 
 #menu { position: absolute; bottom: 33%; margin:0;
-  background-image:url(./img/bg_menu.png); height: 116px; width: 100%; }
+  background-image:url(../img/bg_menu.png); height: 116px; width: 100%; }
 
 #form {color: white; margin-left: 10px;}
 

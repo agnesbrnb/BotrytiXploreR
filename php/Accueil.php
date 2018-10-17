@@ -8,13 +8,13 @@
   <body>
 
     <div id="entete">
-      <img src="./img/logo_log" alt="logo logiciel"/>
+      <img src="../img/logo_log" alt="logo logiciel"/>
     </div>
 
     <div id="menu">
       <h1> Analyse du génome de <i>Botrytis cinerea</i>
         <a href="https://fr.wikipedia.org/wiki/Botrytis_cinerea">
-          <img src="./img/wiki.png" alt="wiki" height="30" width="30"/></a>
+          <img src="../img/wiki.png" alt="wiki" height="30" width="30"/></a>
       </h1>
 
       <div id="form">
@@ -42,7 +42,7 @@
     </div>
 
     <div id="auteur">
-      <a href="Accueil.php"><img src="./img/logo.png" alt="logo auteur" height="120" width="120" /></a>
+      <a href="Accueil.php"><img src="../img/logo.png" alt="logo auteur" height="120" width="120" /></a>
     </div>
 
   </body>
