@@ -1,0 +1,28 @@
+html {
+  margin:0;
+  padding:0;
+  background: url(./img/adn_builder.jpg) no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
+#entete{ position: absolute; margin-left: 10px; top: 5px; margin-bottom: 0px; z-index: 1;}
+/*z-index donne un ordre de priorité pour l'affichage des éléments*/
+
+#menu { float: left; position: absolute;
+  margin-left: 10px; margin-top: 80px; border-radius: 10px;
+  -moz-border-radius:10px;
+-webkit-border-radius:10px;
+  background-color: lightgrey; height: 85%; width: 73%; }
+
+#menu a { margin-left: 25px; }
+#menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
+#menu a:hover .bulle { display: block; }
+#menu .gene{left: 30px;}
+#menu .prot{left: 120px;}
+
+#bandeau {text-align: left; }
+
+p {color: white; margin-left: 5px;}
+
+#retour{position: absolute; margin-left: 88%; bottom: 10px; }
