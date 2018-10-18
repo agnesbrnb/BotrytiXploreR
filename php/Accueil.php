@@ -8,7 +8,7 @@
   <body>
 
     <div id="entete">
-      <img src="../img/logo_log" alt="logo logiciel"/>
+      <img src="../img/logo_log.png" alt="logo logiciel"/>
     </div>
 
     <div id="menu">

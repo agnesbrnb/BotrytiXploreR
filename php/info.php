@@ -9,7 +9,7 @@
 
     <div id="entete">
      <a href="Accueil.php">
-       <img src="../img/logo_log" alt="logo logiciel" height="80" width="320"/></a>
+       <img src="../img/logo_log.png" alt="logo logiciel" height="80" width="320"/></a>
     </div>
 
     <div id="menu">
