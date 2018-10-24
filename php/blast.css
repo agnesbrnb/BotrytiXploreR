@@ -13,16 +13,4 @@ html {
   margin-left: 10px; margin-top: 80px; border-radius: 10px;
   -moz-border-radius:10px;
 -webkit-border-radius:10px;
-  background-color: darkgrey; height: 85%; width: 73%; }
-
-#menu a { margin-left: 25px; }
-#menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
-#menu a:hover .bulle { display: block; }
-#menu .gene{left: 30px;}
-#menu .prot{left: 120px;}
-
-#bandeau {text-align: left; }
-
-p {color: white; margin-left: 5px;}
-
-#retour{position: absolute; margin-left: 88%; bottom: 10px; }
+  background-color: lightgrey; height: 85%; width: 73%; }

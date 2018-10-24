@@ -19,7 +19,8 @@
 
       <div id="form">
         <form action="info.php" method="post">
-          Recherche par ID du locus <input type="text" name="id">
+          Recherche par ID du locus : BC1G_<input type="text" name="id"
+            value="00001" maxlength="5">
           <input type="submit" value="Rechercher">
 
           ou Recherche par BLAST <input type="submit" value="GO" formaction="blast.php">

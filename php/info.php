@@ -17,13 +17,13 @@
       <div id="bandeau">
         <a href="">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
         <a href="">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
+        <a href=""
       </div>
 
       <hr>
       <p>
       <?php
-      $id = $_POST["id"];
-      $fct = $_POST["fct"];
+      $id = "BC1G_".$_POST["id"];
       if($id != ""){
         echo "L'id que vous avez choisi est $id";
       }else{

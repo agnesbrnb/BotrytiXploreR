@@ -13,12 +13,13 @@
     </div>
 
     <div id="menu">
-      <div id="bandeau">
+      <!-- <div id="bandeau">
 
-      <hr>
-      Bienvenue sur BLAST sa mère
-
-      </div>
+      <hr> -->
+      <p>
+        Bienvenue sur BLAST sa mère
+      </p>
+      <!-- </div> -->
     </div>
 
     <div id="retour">
