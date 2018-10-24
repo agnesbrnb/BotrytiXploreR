@@ -25,7 +25,7 @@
           ou Recherche par BLAST <input type="submit" value="GO" formaction="blast.php">
 
 
-          <select name="tf_select" onchange="update(this,document.getElementById('tf'));">
+          <!-- <select name="tf_select" onchange="update(this,document.getElementById('tf'));">
             <option value="">- Choisir une fonction -</option>
             <?php
             $a = array("Nucléase","Catalyseur","Protéine non définie");
@@ -34,7 +34,7 @@
               echo "<option value='".$e."'>".$e."</option>";
             }
             ?>
-          </select>
+          </select> -->
 
 
         </form>

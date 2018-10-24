@@ -26,8 +26,6 @@
       $fct = $_POST["fct"];
       if($id != ""){
         echo "L'id que vous avez choisi est $id";
-      }elseif ($fct != "- Choisir une fonction -") {
-        echo "La fonction choisie est $fct";
       }else{
         echo "Erreur dans votre entrée";
       }
