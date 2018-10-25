@@ -40,7 +40,7 @@ On observe que l'algorithme ne converge pas sur les données surement du au fait
 
 ## Arbre CART
 
-La méthode CART vise à construire un arbre de décision à partir des covariables. A chaque noeud construit est associé une condition dépendant des covariables. On construit l'arbre maximal à partir des données d'apprentissage puis on réalise une étape d'élagage pour réduire le nombre de feuilles. Cependant, on observe que l'arbre maximal possède 17 feuilles ce qui est peu. On utilise les informations sur l'élagage optimale obtenues avec la fonction rpart pour effectuer l'élagage de l'arbre maximal. On obtient alors un arbre à 7 feuilles.
+La méthode CART vise à construire un arbre de décision à partir des covariables. A chaque noeud construit est associé une condition dépendant des covariables. On construit dans un premier temps un arbre maximal à partir des données d'apprentissage puis on réalise une étape d'élagage pour réduire le nombre de feuilles. Les informations sur l'élagage optimale obtenues avec la fonction rpart sont utilisées pour effectuer l'élagage de l'arbre maximal. 
 ```{r}
 error.cart <- numeric() ; error.cartprune <- numeric()
 library(rpart)
@@ -76,9 +76,12 @@ cat("Erreur de classification moyenne pour l'arbre maximal :", mean(error.cart))
 cat("Erreur de classification moyenne pour l'arbre élagué :", mean(error.cartprune))
 ```
 
+On observe une erreur d'apprentissage de 47% pour l'arbre maximal et 36,7% pour l'arbre élagué avec les seed que nous avons utilisé. 
+L'erreur importante et les inconvénients de l'arbre CART nous ont poussé à étudier d'autres méthodes. En effet, la construction de l'arbre dépend du découpage des données et n'est pas constante. Cette méthode n'est donc pas robuste. Une méthode se basant également sur les arbres permet de contourner ce problème :  il s'agit des forêts aléatoires.
+
 ## Forêt aléatoire
 
-(Décrire randomforest) On réalise la méthode de classification random forest pour expliquer les données y par les covariables. On observe ici un taux d'erreur très important. En effet l'OOB, estimation du taux de mal classés sur l'ensemble des données, est de 39,02% et l'erreur de classification calculée est de 36%. Cette méthode a une erreur plus faible que l'arbre CART mais si elle reste élevée. Ce résultat était attendu puisque la méthode randomForest est efficace dans le traitement de modèle avec un grand nombre de paramètres.
+La méthode de forêt aléatoire est une méthode de classification adaptée aux gros jeux de données. Elle permet de construire plusieurs arbres CART maximals et les moyenner afin de diminuer la variance élévée d'un arbre seul. On observe ici un taux d'erreur de 36% ce qui est meilleur que les 47% de l'arbre CART maximal précédent. Ce résultat était attendu puisque la méthode randomForest est plus robuste dans le traitement de modèle avec un grand nombre de paramètres.
 
 ```{r}
 error.rf <- numeric()
@@ -128,7 +131,7 @@ tunerf <- tuneRF(train[,-ncol(train)],Y, ntreeTry = 500)
 
 ## Méthode de bagging
 
-Il s'agit d'une méthode similaire au random forest mais on utilise toutes les covariables pour la construction de chaque noeud et pas un échantillon. (à vérifier)
+Il s'agit d'une méthode similaire au random forest mais on sélectionne toutes les covariables pour la construction de chaque noeud. Cette méthode se base sur le boostrap (ré-échantillonnage) pour générer ensuite un arbre maximal. Cette étape est répétée jsuqu'à atteindre la condition d'arrêt où les arbres seront moyennés. Cette méthode est améliore souvent la qualité de la prédiction. 
 ```{r}
 error.bag <- numeric()
 for(i in c(2018,1234,2017,1996,1107)) {
@@ -148,11 +151,12 @@ for(i in c(2018,1234,2017,1996,1107)) {
 
 mean(error.bag)
 ```
-
+Ici, on peut voir que l'erreur de classification sur le bagging est de 38,4% donc supérieure au randomForest. Nous allons donc utiliser une nouvelle méthode permettant de réduire le modèle afin d'utiliser le glm. 
 
 ## Méthode LASSO
 
-LASSO est une méthode de sélection de variables permettant de réduire les modèles avec de nombreuses covariables. 
+LASSO est une méthode de sélection de variables permettant de réduire les modèles avec de nombreuses covariables. Elle va tester la corrélation des covaribales et en choisir une comme représentative pour un groupe très proche. Cependant, la variable choisit est aléatoire donc limite l'interprétation. En effet, dans notre cas, un gène sélectionné comme représentatif pourrait ne pas réellement agir sur la rechute du cancer du sein mais simplement représenté un groupe de covariables corrélées contenant la vraie variable explicative. 
+Cependant, cette méthode nous a permis de sélectionner une vingtaine de covariables et donc de lancer un glm.
 ```{r}
 error.lasso <- numeric() ; nbvar <- c()
 library(glmnet)
@@ -191,13 +195,12 @@ for(i in c(2018,1234,2017,1996,1107)) {
   pred.glm <- rep("-1", length(test$label))
   pred.glm[proba.glm > 1/2] = "1"
   
-  
   error.lasso <- c(error.lasso, mean(test$label != pred.glm))
 }
 mean(error.lasso)
 
 ```
-
+On observe une erreur de 40% sur le glm. 
 
 
 ## Méthode SVM
