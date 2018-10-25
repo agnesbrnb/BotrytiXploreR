@@ -102,6 +102,30 @@ for(i in c(2018,1234,2017,1996,1107)) {
 mean(error.rf)
 ```
 
+
+
+
+```{r}
+library(randomForest)
+  test <- sample(1:nrow(data),round(nrow(data)/3))
+  train <- (1:nrow(data))[-test]
+  train <- data[train,]
+  test <- data[test,]
+  data.rf = randomForest(label~., data=train, mtry=68, ntree=2000)
+  plot(data.rf)
+    
+Y <- train$label
+tunerf <- tuneRF(train[,-ncol(train)],Y, ntreeTry = 500)
+  tunerf
+  # pred.rf <- predict(data.rf, newdata=test)
+  # error.rf <- c(mean.rf, mean(test$label != pred.rf))
+
+```
+
+
+
+
+
 ## Méthode de bagging
 
 Il s'agit d'une méthode similaire au random forest mais on utilise toutes les covariables pour la construction de chaque noeud et pas un échantillon. (à vérifier)
