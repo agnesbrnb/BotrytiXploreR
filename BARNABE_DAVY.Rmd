@@ -5,7 +5,7 @@ output: html_document
 
 ## Chargement des données et construction des jeux d'apprentissage et de test
 
-Les données représentent 184 femmes qui ont été touchées par le cancer du sein ainsi que leur taux d'expression pour 4654 gènes. Nous disposons également d'une variable "label" indiquant la rechute ou non pour chaque femme. L'objectif ici est de déterminer la meilleure méthode d'apprentissage statistique pour prédire la rechute du cancer du sein. Tout d'abord les données sont chargées, mises en forme et divisées en 2 jeux de données : un d'apprentissage et un de test. 
+Les données représentent 184 femmes qui ont été touchées par le cancer du sein ainsi que leur taux d'expression pour 4654 gènes. Nous disposons également d'une variable "label" indiquant la rechute ou non pour chaque femme. L'objectif ici est de déterminer la meilleure méthode d'apprentissage statistique pour prédire la rechute du cancer du sein. Tout d'abord les données sont chargées et mises en forme. Nous avons testé les méthodes avec un jeu de données d'apprentissage et un jeu test. Au vu du faible nombre d'observations, nous avons réalisé une boucle pour chaque méthode avec 5 seed différents puis moyenné les erreurs de classification afin de comparer plus justement les méthodes entre elles. 
 Nous avons donc 184 observations pour 4654 covariables et une variable à expliquer. Nous avons donc beaucoup plus de paramètres que d'observations ce qui complique la construction d'un bon modèle. 
 
 ```{r}
@@ -81,7 +81,7 @@ L'erreur importante et les inconvénients de l'arbre CART nous ont poussé à é
 
 ## Forêt aléatoire
 
-La méthode de forêt aléatoire est une méthode de classification adaptée aux gros jeux de données. Elle permet de construire plusieurs arbres CART maximals et les moyenner afin de diminuer la variance élévée d'un arbre seul. On observe ici un taux d'erreur de 36% ce qui est meilleur que les 47% de l'arbre CART maximal précédent. Ce résultat était attendu puisque la méthode randomForest est plus robuste dans le traitement de modèle avec un grand nombre de paramètres.
+La méthode de forêt aléatoire est une méthode de classification adaptée aux gros jeux de données. Elle permet de construire plusieurs arbres CART maximals et les moyenner afin de diminuer la variance élévée d'un arbre seul. On observe ici un taux d'erreur de 39,34% avec les paramètres par défaut. 
 
 ```{r}
 error.rf <- numeric()
@@ -100,32 +100,45 @@ for(i in c(2018,1234,2017,1996,1107)) {
   data.rf
   
   pred.rf <- predict(data.rf, newdata=test)
-  error.rf <- c(mean.rf, mean(test$label != pred.rf))
+  error.rf <- c(error.rf, mean(test$label != pred.rf))
 }
 mean(error.rf)
 ```
 
 
-
-
+On cherche à optimiser les paramètres du randomForest. Pour cela on va chercher le nombre optimal de nombre d'arbres dans la forêt visuellement, à l'aide d'un graphe, en observant l'erreur estimée (OOB). On observe que l'erreur se stabilise à partir 1000 arbres. On choisit donc cette taille pour la forêt afin de minimiser l'erreur. Néanmoins, il ne faut pas trop augmenter ntree pour ne pas réaugmenter l'erreur de classification. On utilise ensuite la fonction tuneRF qui permet de trouver la meilleure valeur pour mtry, le nombre de variables sélectionnées à chaque noeud. On lance tuneRF avec un nombre d'arbre de 2000. Le mtry avec la plus petite erreur est 136. En utilisant ces nouveaux paramètres dans le randomForest, l'erreur de classification passe de 39,34% à 36,7% pour les mêmes jeux de données. 
 ```{r}
 library(randomForest)
+test <- sample(1:nrow(data),round(nrow(data)/3))
+train <- (1:nrow(data))[-test]
+train <- data[train,]
+test <- data[test,]
+test.rf = randomForest(label~., data=train, mtry=136, ntree=3000)
+plot(1:test.rf$ntree, test.rf$err.rate[,1], type='l')
+    
+Y <- train$label
+tunerf <- tuneRF(train[,-ncol(train)],Y, ntreeTry = 2000)
+tunerf
+test.pred.rf <- predict(test.rf, newdata=test)
+mean(test$label != test.pred.rf)
+
+error.rf <- numeric()
+for(i in c(2018,1234,2017,1996,1107)) {
+  set.seed(i)
+  
   test <- sample(1:nrow(data),round(nrow(data)/3))
   train <- (1:nrow(data))[-test]
   train <- data[train,]
   test <- data[test,]
-  data.rf = randomForest(label~., data=train, mtry=68, ntree=2000)
-  plot(data.rf)
-    
-Y <- train$label
-tunerf <- tuneRF(train[,-ncol(train)],Y, ntreeTry = 500)
-  tunerf
-  # pred.rf <- predict(data.rf, newdata=test)
-  # error.rf <- c(mean.rf, mean(test$label != pred.rf))
-
+  
+  data.rf = randomForest(label~., data=train, mtry=136,ntree=2000)
+  data.rf
+  
+  pred.rf <- predict(data.rf, newdata=test)
+  error.rf <- c(error.rf, mean(test$label != pred.rf))
+}
+mean(error.rf)
 ```
-
-
 
 
 
@@ -142,7 +155,7 @@ for(i in c(2018,1234,2017,1996,1107)) {
   train <- data[train,]
   test <- data[test,]
   
-  fit.bag <- randomForest(label~., data = train, mtry=ncol(data)-1)
+  fit.bag <- randomForest(label~., data = train, mtry=ncol(data)-1, ntree=2000)
   fit.bag
   
   pred.bag <- predict(fit.bag, newdata=test)
@@ -156,7 +169,8 @@ Ici, on peut voir que l'erreur de classification sur le bagging est de 38,4% don
 ## Méthode LASSO
 
 LASSO est une méthode de sélection de variables permettant de réduire les modèles avec de nombreuses covariables. Elle va tester la corrélation des covaribales et en choisir une comme représentative pour un groupe très proche. Cependant, la variable choisit est aléatoire donc limite l'interprétation. En effet, dans notre cas, un gène sélectionné comme représentatif pourrait ne pas réellement agir sur la rechute du cancer du sein mais simplement représenté un groupe de covariables corrélées contenant la vraie variable explicative. 
-Cependant, cette méthode nous a permis de sélectionner une vingtaine de covariables et donc de lancer un glm.
+Cependant, cette méthode nous a permis de sélectionner une vingtaine de covariables et donc de lancer un glm. L'optimisation de LASSO, donc du paramètre lambda, a été faite visuellement en utilisant le graphique représentant le modèle. On observe une courbe diminuant jusqu'à arriver à un plateau. Le nombre optimal de variables dans le modèle se situe au niveau du coude entre la pente et le plateau. On fixe donc la valeur de lambda correspondant au coude. 
+On peut ensuite récupérer les variables sélectionnées et les utiliser dans le glm. On obtient alors une erreur de classification de 40%. 
 ```{r}
 error.lasso <- numeric() ; nbvar <- c()
 library(glmnet)
