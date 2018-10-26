@@ -9,7 +9,7 @@ Les données représentent 184 femmes qui ont été touchées par le cancer du s
 Nous avons donc 184 observations pour 4654 covariables et une variable à expliquer. Nous avons donc beaucoup plus de paramètres que d'observations ce qui complique la construction d'un bon modèle. 
 
 ```{r}
-setwd("~/Documents/M2-AMI2B/Apprentissage_Statistique/projet/")
+# setwd("~/Documents/M2-AMI2B/Apprentissage_Statistique/projet/")
 train <- t(read.table("xtrain.txt", sep="\t", as.is = NA))
 data = numeric()
 for (i in 2:nrow(train)){
@@ -130,6 +130,22 @@ for(i in c(2018,1234,2017,1996,1107)) {
   
   pred.rf <- predict(data.rf, newdata=test)
   error.rf <- c(error.rf, mean(test$label != pred.rf))
+  
+  # Courbe ROC
+  pred.rf = predict(data.rf, newdata = test, type = "prob")
+  
+  s = seq(0,1,0.01)
+  
+  absc = numeric(length(s))
+  ordo = numeric(length(s))
+  
+  for (i in 1:length(s)) 
+  {
+    ordo[i] = sum(pred.rf[,"1"] >= s[i] & test$label == "1") / sum(test$label == "1")  
+    absc[i] = sum(pred.rf[,"1"] >= s[i] & test$label == "-1") / sum(test$label == "-1")
+  }
+  
+  lines(absc,ordo,type = "l",col = i)
 }
 mean(error.rf)
 ```
@@ -165,11 +181,13 @@ Cependant, cette méthode nous a permis de sélectionner une vingtaine de covari
 On peut ensuite récupérer les variables sélectionnées et les utiliser dans le glm. On obtient alors une erreur de classification de 40%. 
 ```{r}
 error.lasso <- numeric() ; nbvar <- c()
+error.rf.la <- numeric()
+error.svm.la <- numeric()
 library(glmnet)
 library(randomForest)
 library(e1071)
-# for(i in c(2018,1234,2017,1996,1107)) {
-  # set.seed(i)
+for(i in c(2018,1234,2017,1996,1107)) {
+  set.seed(i)
   
   test <- sample(1:nrow(data),round(nrow(data)/3))
   train <- (1:nrow(data))[-test]
@@ -183,9 +201,9 @@ library(e1071)
   cv.out = cv.glmnet(X,Y, family = "binomial", lambda = seq(exp(-6),1,length = 500))
   cv.out.zoom = cv.glmnet(X,Y, family = "binomial", lambda = seq(exp(-6),exp(-2.5),length = 500))
   
-  par(mfrow=c(1,2))
-  plot(cv.out)
-  plot(cv.out.zoom)
+  # par(mfrow=c(1,2))
+  # plot(cv.out)
+  # plot(cv.out.zoom)
   
   min = cv.out.zoom$lambda.min
   
@@ -203,30 +221,9 @@ library(e1071)
   pred.glm <- rep("-1", length(test$label))
   pred.glm[proba.glm > 1/2] = "1"
   
-  # error.lasso <- c(error.lasso, mean(test$label != pred.glm))
-  mean(test$label != pred.glm)
-  
-  ### SVM
-  
-  tune.out = tune(svm, label~., data = train, kernel = "radial",
-                  ranges = list(
-                    cost = c(1e-15,1e-7,1,10),
-                    gamma = c(1e-15,1e-7,0.1,1)
-                    # le nombre d'observation est faible
-                    # nous avons donc choisi de réduire le nombre de partion
-                    # pour la cross validation du tune
-                    # tunecontrol = tune.control(cross = 3)
-                  ))
-  fit.svm = svm(label~., train[,c(select,ncol(train))], kernel="radial", probability=TRUE, cost=tune.out$best.parameters$cost, gamma=tune.out$best.parameters$gamma)
-  mean(test$label != predict(fit.svm,newdata = test))
-  
-  ### Random forest
-  test.rf = randomForest(label~., data=train, mtry=136, ntree=3000)
-  test.pred.rf <- predict(test.rf, newdata=test)
-  mean(test$label != test.pred.rf)
-  
-# }
-# mean(error.lasso)
+  error.lasso <- c(error.lasso, mean(test$label != pred.glm))
+
+}
 ```
 On observe une erreur de 40% sur le glm. 
 
@@ -265,4 +262,26 @@ for(i in c(2018,1234,2017,1996,1107)) {
 mean(error.svm)
 ```
 
+# Prediction du jeu de donnée test
+## Chargement des données
+```{r}
+donnee_test <- t(read.table("xtest.txt", sep="\t", as.is = NA))
+data_test = numeric()
+for (i in 2:nrow(donnee_test)){
+  data_test <- rbind(data_test, as.numeric(donnee_test[i,]))
+}
+colnames(data_test) <- donnee_test[1,]
+cat("Dimension des données :",dim(data_test), "\n")
+```
 
+## Construction du modele avec la methode random forest
+Pour la construction du modèle, les valeurs optimisées des parametres mtry et ntree sont utilisées
+```{r}
+fit <-  randomForest(label~., data=data, mtry=136, ntree=2000)
+
+pred <- predict(fit, newdata = data_test, type = "prob")
+
+vecteur <- pred [,2]
+
+write(x = vecteur, file = "ytest.txt", sep = "\n")
+```
