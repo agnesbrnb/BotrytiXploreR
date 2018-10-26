@@ -126,27 +126,13 @@ for(i in c(2018,1234,2017,1996,1107)) {
   train <- (1:nrow(data))[-test]
   train <- data[train,]
   test <- data[test,]
-<<<<<<< HEAD
-  
-  data.rf = randomForest(label~., data=train, mtry=136,ntree=2000)
   data.rf
   
   pred.rf <- predict(data.rf, newdata=test)
   error.rf <- c(error.rf, mean(test$label != pred.rf))
 }
 mean(error.rf)
-=======
-  data.rf = randomForest(label~., data=train, mtry=68, ntree=2000)
-  plot(data.rf)
-    
-Y <- train$label
-tunerf <- tuneRF(train[,-ncol(train)],Y, ntreeTry = 500)
-  tunerf
-  pred.rf <- predict(data.rf, newdata=test)
-  mean(test$label != pred.rf)
->>>>>>> 08370b63e5afbc492f3cebf177cce641466fb63b
 ```
-
 
 
 ## Méthode de bagging
