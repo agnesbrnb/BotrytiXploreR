@@ -166,8 +166,10 @@ On peut ensuite récupérer les variables sélectionnées et les utiliser dans l
 ```{r}
 error.lasso <- numeric() ; nbvar <- c()
 library(glmnet)
-for(i in c(2018,1234,2017,1996,1107)) {
-  set.seed(i)
+library(randomForest)
+library(e1071)
+# for(i in c(2018,1234,2017,1996,1107)) {
+  # set.seed(i)
   
   test <- sample(1:nrow(data),round(nrow(data)/3))
   train <- (1:nrow(data))[-test]
@@ -192,6 +194,7 @@ for(i in c(2018,1234,2017,1996,1107)) {
   
   nbvar <- c(nbvar, length(beta[,])) # La longueur de beta correspond donc a la dimension du modèle séléctionné
   
+  ### GLM
   select = which(coef(cv.out.zoom)!=0)
   data.glm <- glm(label~., data=train[,c(select,ncol(train))], family = binomial)
   summary(data.glm)
@@ -200,9 +203,30 @@ for(i in c(2018,1234,2017,1996,1107)) {
   pred.glm <- rep("-1", length(test$label))
   pred.glm[proba.glm > 1/2] = "1"
   
-  error.lasso <- c(error.lasso, mean(test$label != pred.glm))
-}
-mean(error.lasso)
+  # error.lasso <- c(error.lasso, mean(test$label != pred.glm))
+  mean(test$label != pred.glm)
+  
+  ### SVM
+  
+  tune.out = tune(svm, label~., data = train, kernel = "radial",
+                  ranges = list(
+                    cost = c(1e-15,1e-7,1,10),
+                    gamma = c(1e-15,1e-7,0.1,1)
+                    # le nombre d'observation est faible
+                    # nous avons donc choisi de réduire le nombre de partion
+                    # pour la cross validation du tune
+                    # tunecontrol = tune.control(cross = 3)
+                  ))
+  fit.svm = svm(label~., train[,c(select,ncol(train))], kernel="radial", probability=TRUE, cost=tune.out$best.parameters$cost, gamma=tune.out$best.parameters$gamma)
+  mean(test$label != predict(fit.svm,newdata = test))
+  
+  ### Random forest
+  test.rf = randomForest(label~., data=train, mtry=136, ntree=3000)
+  test.pred.rf <- predict(test.rf, newdata=test)
+  mean(test$label != test.pred.rf)
+  
+# }
+# mean(error.lasso)
 ```
 On observe une erreur de 40% sur le glm. 
 
