@@ -39,7 +39,6 @@
 				while ($donnees = $requete->fetch()) 
 				{
 					$sequence = $donnees['sequence'];
-
 				}
 				$fenetre = $_POST["fenetre"];
 
