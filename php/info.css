@@ -18,12 +18,12 @@ html {
 #menu a { margin-left: 25px; }
 #menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
 #menu a:hover .bulle { display: block; }
-#menu .gene{left: 400px;}
+#menu .gene{left: 420px;}
 #menu .prot{left: 500px;}
 #menu .hydro{left: 600px;}
 
 #bandeau {text-align: left; margin-left: 15px;}
 
-p {color: white; margin-left: 5px;}
+p {color: white; margin-left: 5px;, margin-top: 1px;}
 
 #retour{position: absolute; margin-left: 88%; bottom: 10px; }

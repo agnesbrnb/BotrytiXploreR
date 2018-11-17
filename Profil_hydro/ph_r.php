@@ -17,7 +17,7 @@
 			if (isset($_POST['id']))
 			{
 				// charger la base de données
-				$bdd = new PDO('mysql:host=localhost;dbname=projetweb','agnes','password',
+				$bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
 								array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 				$requete = $bdd -> prepare // query() si pas de variable
@@ -30,7 +30,7 @@
 
 				$requete -> execute(array($_POST['id'],$_POST['id'])); // change les valeurs dans l'ordre
 
-				// Dans notre cas on veux que la recherche se fasse soit avec id du transcrit ou du gene
+				// Dans notre cas on veut que la recherche se fasse soit avec id du transcrit ou du gene
 				// d'ou la ligne OR id_transcrit = ?
 				// C'est pour cela qu'il y a deux fois $_POST["id"]
 

@@ -1,3 +1,11 @@
+<?php
+
+// Démarrage de la session pour conserver l'id du gène
+session_start();
+$_SESSION['var']=$_POST["id"];
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,12 +27,14 @@
 
         <form action="info_gene.php" method="post">
           Chercher un autre gène : BC1G_<input type="text" name="id"
-            value="00001" maxlength="5">
+            value=<?php
+              if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}
+            ?> maxlength="5">
           <input type="submit" value="Go !">
 
           <a href="info_gene.php">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
           <a href="info_prot.php">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
-          <a href="">Hydrophobicité<img class="bulle hydro" src="../img/phydro.png" alt="Hydrophob" /></a>
+          <a href="profil_hydro.php">Hydrophobicité<img class="bulle hydro" src="../img/phydro.png" alt="Hydrophob" /></a>
 
         </form>
 
@@ -34,9 +44,9 @@
 <!-- interrogation de la BD pour récupérer les infos du gène -->
       <p>
       <?php
-        $id = "BC1G_".$_POST["id"];
+        $id = "BC1G_".$_SESSION['var'];
         if($id != ""){
-          $bdd = new PDO('mysql:host=localhost;dbname=projetweb','agnes','password',
+          $bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
   								array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
           $requete = $bdd -> prepare(
             "select length, start, stop, fonction
