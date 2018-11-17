@@ -6,8 +6,8 @@
 	<!-- FORMULAIRE -->
 		<form action="ph_r.php" method="post">
 			<p> <font size = "+3"> Profil d'hydrophobicité </font></p>
-			ID <input type="text" name="id">
-			fenetre <input type="text" name="fenetre">
+			ID <input type="text" name="id" placeholder = "BC1G_00001">
+			fenetre <input type="text" name="fenetre" placeholder = "9">
 			<input type="submit" value="Valider">
 		</form>
 
@@ -46,7 +46,7 @@
 
 			if (isset($sequence) AND isset($fenetre)) {
 				echo $sequence;
-				exec ("Rscript profil_hydro.R $sequence $fenetre");
+				exec ("Rscript /var/www/html/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
 				?>
 				<img src="../img/rplot.jpg">
 				<?php
