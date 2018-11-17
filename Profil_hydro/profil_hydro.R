@@ -31,4 +31,3 @@ profil_hydrophobicite <- function(seq,w){
   dev.off()
 }
 profil_hydrophobicite(args[1],as.numeric(args[2]))
-
