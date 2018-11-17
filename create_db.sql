@@ -33,20 +33,20 @@ CREATE TABLE protein(
 );
 
 
-LOAD DATA LOCAL INFILE "/Users/agnes/Sites/projet-web/bd/table_gene.csv"
+LOAD DATA LOCAL INFILE "/var/www/html/projet-web/bd/table_gene.csv"
 INTO TABLE gene
 COLUMNS TERMINATED BY ";"
 LINES TERMINATED BY "\n"
 IGNORE 1 LINES;
 
-LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/table_pfam.csv"
+LOAD DATA LOCAL INFILE "/var/www/html/projet-web/bd/table_pfam.csv"
 INTO TABLE pfam
 COLUMNS TERMINATED BY ";"
 LINES TERMINATED BY "\n"
 IGNORE 1 LINES
 (locus, pfam_code, domaine, pfam_start, pfam_stop, length, pfam_score, pfam_exp);
 
-LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/proteins.csv"
+LOAD DATA LOCAL INFILE "/var/www/html/projet-web/bd/proteins.csv"
 INTO TABLE protein
 COLUMNS TERMINATED BY ";"
 LINES TERMINATED BY "\n"
