@@ -14,16 +14,16 @@
 
 		<!--  RECHERCHE DANS LA BASE DE DONNEES DE LA SEQUENCE -->
 		<?php
-			if (isset($_POST['id'])) 
+			if (isset($_POST['id']))
 			{
 				// charger la base de données
-				$bdd = new PDO('mysql:host=localhost;dbname=Projet_Web','martin','polluxetNeo2596a', 
+				$bdd = new PDO('mysql:host=localhost;dbname=projetweb','agnes','password',
 								array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 				$requete = $bdd -> prepare // query() si pas de variable
 				('
 					SELECT id_gene, sequence
-					FROM proteins_fasta
+					FROM protein
 					WHERE id_gene = ?
 					OR id_transcrit = ?
 				');							// ? designe les caracteres a changer
@@ -36,7 +36,7 @@
 
 
 				// stocke la sequence dans une autre variable
-				while ($donnees = $requete->fetch()) 
+				while ($donnees = $requete->fetch())
 				{
 					$sequence = $donnees['sequence'];
 				}

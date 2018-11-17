@@ -18,7 +18,7 @@
       </h1>
 
       <div id="form">
-        <form action="info.php" method="post">
+        <form action="info_gene.php" method="post">
           Recherche par ID du locus : BC1G_<input type="text" name="id"
             value="00001" maxlength="5">
           <input type="submit" value="Rechercher">
