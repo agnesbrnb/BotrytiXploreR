@@ -9,43 +9,45 @@ CREATE TABLE gene(
   PRIMARY KEY(locus)
 );
 
-LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/table_gene.csv"
-INTO TABLE gene
-FIELDS TERMINATED BY ";"
-TERMINATED BY "\n"
-IGNORE 1 LINES;
-
 CREATE TABLE pfam(
   id int AUTO_INCREMENT,
   locus VARCHAR(10),
-  code VARCHAR(10),
+  pfam_code VARCHAR(10),
   domaine VARCHAR(50),
-  start int,
-  stop int,
+  pfam_start int,
+  pfam_stop int,
   length int,
-  pfam_code float,
+  pfam_score float,
   pfam_exp float,
   PRIMARY KEY(id),
   CONSTRAINT fk_locus_pfam FOREIGN KEY(locus) REFERENCES gene(locus)
 );
 
-LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/table_pfam.csv"
-INTO TABLE gene
-FIELDS TERMINATED BY ";"
-TERMINATED BY "\n"
-IGNORE 1 LINES;
-
 CREATE TABLE protein(
-  transcrit VARCHAR(10),
-  locus VARCHAR(10),
+  id_transcrit VARCHAR(10),
+  id_gene VARCHAR(10),
   length int,
   sequence text,
-  PRIMARY KEY(transcrit, locus),
-  CONSTRAINT fk_locus_prot FOREIGN KEY(locus) REFERENCES gene(locus)
+  PRIMARY KEY(id_transcrit, id_gene),
+  CONSTRAINT fk_locus_prot FOREIGN KEY(id_gene) REFERENCES gene(locus)
 );
 
-LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/proteins.csv"
+
+LOAD DATA LOCAL INFILE "/Users/agnes/Sites/projet-web/bd/table_gene.csv"
 INTO TABLE gene
-FIELDS TERMINATED BY ";"
-TERMINATED BY "\n"
+COLUMNS TERMINATED BY ";"
+LINES TERMINATED BY "\n"
+IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/table_pfam.csv"
+INTO TABLE pfam
+COLUMNS TERMINATED BY ";"
+LINES TERMINATED BY "\n"
+IGNORE 1 LINES
+(locus, pfam_code, domaine, pfam_start, pfam_stop, length, pfam_score, pfam_exp);
+
+LOAD DATA LOCAL INFILE "/Users/agnesb/Sites/projet-web/bd/proteins.csv"
+INTO TABLE protein
+COLUMNS TERMINATED BY ";"
+LINES TERMINATED BY "\n"
 IGNORE 1 LINES;
