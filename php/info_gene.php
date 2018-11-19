@@ -34,7 +34,6 @@ $_SESSION['var']=$_POST["id"];
 
           <a href="info_gene.php">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
           <a href="info_prot.php">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
-          <a href="profil_hydro.php">Hydrophobicité<img class="bulle hydro" src="../img/phydro.png" alt="Hydrophob" /></a>
 
         </form>
 

@@ -13,7 +13,7 @@ html {
   margin-left: 10px; margin-top: 80px; margin-bottom: 20px;
   border-radius: 10px; -moz-border-radius:10px;
   -webkit-border-radius:10px;
-  background-color: darkgrey; height: auto; width: 73%; }
+  background-color: lightgrey; height: auto; width: 73%; }
 
 #menu a { margin-left: 25px; }
 #menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
@@ -26,14 +26,18 @@ html {
 
 #hydro {text-align: center; height: auto; width: auto; margin-bottom: 10px;}
 
-p {color: white; margin-left: 5px;, margin-top: 1px;}
+p {color: black; margin-left: 5px;, margin-top: 1px; }
+
+#sequence {
+  color: black; margin-left: 5px;, margin-top: 1px;
+  font-family: "Courier New", Courier, serif;}
 
 #retour{position: absolute; margin-left: 88%; bottom: 10px; }
 
 /* footer {
  position : absolute;
  bottom : 0;
- color : white;
+ color : black;
  margin-left: 30%;
  font-size: 13px;
 } */
