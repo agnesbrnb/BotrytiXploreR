@@ -10,20 +10,30 @@ html {
 /*z-index donne un ordre de priorité pour l'affichage des éléments*/
 
 #menu { float: left; position: absolute;
-  margin-left: 10px; margin-top: 80px; border-radius: 10px;
-  -moz-border-radius:10px;
--webkit-border-radius:10px;
-  background-color: darkgrey; height: 85%; width: 73%; }
+  margin-left: 10px; margin-top: 80px; margin-bottom: 20px;
+  border-radius: 10px; -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  background-color: darkgrey; height: auto; width: 73%; }
 
 #menu a { margin-left: 25px; }
 #menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
 #menu a:hover .bulle { display: block; }
-#menu .gene{left: 420px;}
-#menu .prot{left: 500px;}
-#menu .hydro{left: 600px;}
+#menu .gene{left: 430px;}
+#menu .prot{left: 530px;}
+#menu .hydro{left: 630px;}
 
 #bandeau {text-align: left; margin-left: 15px;}
+
+#hydro {text-align: center; height: auto; width: auto; margin-bottom: 10px;}
 
 p {color: white; margin-left: 5px;, margin-top: 1px;}
 
 #retour{position: absolute; margin-left: 88%; bottom: 10px; }
+
+/* footer {
+ position : absolute;
+ bottom : 0;
+ color : white;
+ margin-left: 30%;
+ font-size: 13px;
+} */

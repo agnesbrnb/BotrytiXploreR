@@ -46,7 +46,7 @@
 
 			if (isset($sequence) AND isset($fenetre)) {
 				echo $sequence;
-				exec ("Rscript profil_hydro.R $sequence $fenetre");
+				exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
 				?>
 				<img src="../img/rplot.jpg">
 				<?php
