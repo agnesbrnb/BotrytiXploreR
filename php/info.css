@@ -18,9 +18,8 @@ html {
 #menu a { margin-left: 25px; }
 #menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
 #menu a:hover .bulle { display: block; }
-#menu .gene{left: 430px;}
-#menu .prot{left: 530px;}
-#menu .hydro{left: 630px;}
+#menu .gene{left: 400px;}
+#menu .prot{left: 480px;}
 
 #bandeau {text-align: left; margin-left: 15px;}
 
@@ -28,8 +27,7 @@ html {
 
 p {color: black; margin-left: 5px;, margin-top: 1px; }
 
-#sequence {
-  color: black; margin-left: 5px;, margin-top: 1px; margin-right: 50px;
+#sequence {margin-right: 50px;
   font-family: "Courier New", Courier, serif;
   overflow-wrap: break-word;
   word-break:break-all;}
