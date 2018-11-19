@@ -41,7 +41,7 @@ session_start();
       <hr>
 <!-- interrogation de la BD pour récupérer les infos sur la protéine -->
       <p>La séquence protéique : </p>
-      <div id="sequence">
+      <p id="sequence" wrap=wrap>
 
         <?php
           $id = "BC1G_".$_SESSION['var'];
@@ -73,12 +73,12 @@ session_start();
     			}
 
     			if (isset($sequence) AND isset($fenetre)) {
-            $seq = wordwrap($sequence, 75, "<br>", true);
-    				echo "$seq";
+            // $seq = wordwrap($sequence, 75, "<br>", true);
+    				echo $sequence;
     				exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
     		?>
 
-      </div><br>
+      </p><br>
 
        <form action="info_prot.php" method="post">
          Définir la fenetre : <input type="text" name="fenetre"

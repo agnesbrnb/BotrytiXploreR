@@ -29,8 +29,10 @@ html {
 p {color: black; margin-left: 5px;, margin-top: 1px; }
 
 #sequence {
-  color: black; margin-left: 5px;, margin-top: 1px;
-  font-family: "Courier New", Courier, serif;}
+  color: black; margin-left: 5px;, margin-top: 1px; margin-right: 50px;
+  font-family: "Courier New", Courier, serif;
+  overflow-wrap: break-word;
+  word-break:break-all;}
 
 #retour{position: absolute; margin-left: 88%; bottom: 10px; }
 
