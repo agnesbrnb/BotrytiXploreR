@@ -75,7 +75,8 @@ session_start();
     			if (isset($sequence) AND isset($fenetre)) {
             $seq = wordwrap($sequence, 75, "<br>", true);
     				echo "$seq";
-    				exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
+            // whoami
+    				exec ("/usr/local/bin/Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
     		?>
 
        </p>
