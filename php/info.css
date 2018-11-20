@@ -15,8 +15,9 @@ html {
   -webkit-border-radius:10px;
   background-color: lightgrey; height: auto; width: 73%; }
 
+/* Insertion des bulles au dessus des liens */
 #menu a { margin-left: 25px; }
-#menu .bulle { display: none; position: absolute; top: -65px; z-index:10000; z-index: 2;}
+#menu .bulle { display: none; position: absolute; top: -65px; z-index: 2;}
 #menu a:hover .bulle { display: block; }
 #menu .gene{left: 400px;}
 #menu .prot{left: 480px;}

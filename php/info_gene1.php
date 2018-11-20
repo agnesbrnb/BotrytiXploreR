@@ -2,7 +2,7 @@
 
 // Démarrage de la session pour conserver l'id du gène
 session_start();
-// $_SESSION['var']=$_POST["id"];
+$_SESSION['var']=$_POST["id"];
 
 ?>
 
@@ -25,7 +25,7 @@ session_start();
 <!-- Bar de menu avec liens et formulaire -->
       <div id="bandeau">
 
-        <form action="info_gene1.php" method="post">
+        <form action="info_gene.php" method="post">
           Chercher un autre gène : BC1G_<input type="text" name="id"
             value=<?php
               if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}

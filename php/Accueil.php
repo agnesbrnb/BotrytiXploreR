@@ -18,25 +18,12 @@
       </h1>
 
       <div id="form">
-        <form action="info_gene.php" method="post">
+        <form action="info_gene1.php" method="post">
           Recherche par ID du locus : BC1G_<input type="text" name="id"
             value="00001" maxlength="5">
           <input type="submit" value="Rechercher">
 
           ou Recherche par BLAST <input type="submit" value="GO" formaction="blast.php">
-
-
-          <!-- <select name="tf_select" onchange="update(this,document.getElementById('tf'));">
-            <option value="">- Choisir une fonction -</option>
-            <?php
-            $a = array("Nucléase","Catalyseur","Protéine non définie");
-            foreach($a as $e)
-            {
-              echo "<option value='".$e."'>".$e."</option>";
-            }
-            ?>
-          </select> -->
-
 
         </form>
       </div>

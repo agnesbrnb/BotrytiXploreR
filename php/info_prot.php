@@ -24,7 +24,7 @@ session_start();
 <!-- Bar de menu avec liens et formulaire -->
       <div id="bandeau">
 
-        <form action="info_gene.php" method="post">
+        <form action="info_gene1.php" method="post">
           Chercher un autre gène : BC1G_<input type="text" name="id"
             value=<?php
               if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}
@@ -78,7 +78,7 @@ session_start();
     				exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
     		?>
 
-      </p><br>
+      </p>
 
        <form action="info_prot.php" method="post">
          Définir la fenetre : <input type="text" name="fenetre"
