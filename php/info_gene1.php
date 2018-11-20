@@ -2,7 +2,7 @@
 
 // Démarrage de la session pour conserver l'id du gène
 session_start();
-$_SESSION['var']=$_POST["id"];
+$_SESSION['var']=$_POST['id'];
 
 ?>
 
@@ -15,6 +15,60 @@ $_SESSION['var']=$_POST["id"];
 
   <body>
 
+<!-- code php interrogation de la BD pour récupérer les infos du gène -->
+  <?php
+    $id = "BC1G_".$_SESSION['var'];
+    if($id != ""){
+      $bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
+              array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+      // Recupere les informations sur le gène
+      $requete = $bdd -> prepare(
+        "select length, start, stop, fonction
+         from gene
+         where locus = ?"
+       );
+
+       $requete -> execute(array($id));
+
+      while ($donnees = $requete->fetch())
+      {
+        $length = $donnees['length'];
+        $start = $donnees['start'];
+        $stop = $donnees['stop'];
+        $fonction = $donnees['fonction'];
+      }
+
+      // Recupere les id des genes ayant la meme fonction que le gene cible si
+      // la fonction n'est pas "predicted protein" ou "conserved hypothetical protein"
+      if($fonction != "predicted protein" &&
+        $fonction != "conserved hypothetical protein"){
+          $requete = $bdd -> prepare(
+          "select locus
+          from gene
+          where fonction = (SELECT fonction
+          from gene
+          where locus = ?)"
+        );
+        $requete -> execute(array($id));
+
+        $gene_fct = "";
+        while($donnees = $requete -> fetch()){
+          if($gene_fct!=""){
+            $gene_fct = $gene_fct.", ".$donnees['locus'];
+          }else{
+            $gene_fct = $donnees['locus'];
+          }
+        }
+      }else{
+        $gene_fct = "La fonction n'est pas connue.";
+      }
+
+    }else{
+      echo "Erreur dans votre entrée";
+    }
+   ?>
+
 <!-- entete de la page -->
     <div id="entete">
      <a href="Accueil.php">
@@ -25,7 +79,7 @@ $_SESSION['var']=$_POST["id"];
 <!-- Bar de menu avec liens et formulaire -->
       <div id="bandeau">
 
-        <form action="info_gene.php" method="post">
+        <form action="info_gene1.php" method="post">
           Chercher un autre gène : BC1G_<input type="text" name="id"
             value=<?php
               if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}
@@ -40,42 +94,19 @@ $_SESSION['var']=$_POST["id"];
       </div>
 
       <hr>
-<!-- interrogation de la BD pour récupérer les infos du gène -->
-      <p>
-      <?php
-        $id = "BC1G_".$_SESSION['var'];
-        if($id != ""){
-          $bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
-  								array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-          $requete = $bdd -> prepare(
-            "select length, start, stop, fonction
-             from gene
-             where locus = ?"
-           );
 
-           $requete -> execute(array($id));
-
-          while ($donnees = $requete->fetch())
-   				{
-   					$length = $donnees['length'];
-            $start = $donnees['start'];
-            $stop = $donnees['stop'];
-            $fonction = $donnees['fonction'];
-   				}
-
-        }else{
-          echo "Erreur dans votre entrée";
-        }
-       ?>
-
+       <h1>
+          Voici les informations principales sur le gène : <br>
+        </h1>
 <!-- remplissage des informations sur le gène -->
-       Voici les informations principales sur le gène <b><?php echo $id; ?></b><br><br>
-       Taille de la séquence : <b><?php echo $length; ?></b><br><br>
-       Position de début du gène : <b><?php echo $start; ?></b><br><br>
-       Position de fin du gène : <b><?php echo $stop; ?></b><br><br>
-       Fonction du gène : <b><?php echo $fonction; ?></b><br><br>
+        <p>
+         Taille de la séquence : <b><?php echo $length; ?></b><br><br>
+         Position de début du gène : <b><?php echo $start; ?></b><br><br>
+         Position de fin du gène : <b><?php echo $stop; ?></b><br><br>
+         Fonction du gène : <b><?php echo $fonction; ?></b><br><br>
+         Gène-s ayant la même fonction : <b><?php echo $gene_fct; ?></b><br><br>
+       </p>
 
-     </p>
     </div>
 
     <div id="retour">

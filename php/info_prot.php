@@ -14,6 +14,43 @@ session_start();
 
   <body>
 
+<!-- code php base de données -->
+    <?php
+      $id = "BC1G_".$_SESSION['var'];
+      if($id != ""){
+        $bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+        // Recupérer la séquence et le profil d'hydrophobicité
+        $requete = $bdd -> prepare // query() si pas de variable
+        ('
+          SELECT sequence, length
+          FROM protein
+          WHERE id_gene = ?
+        ');
+
+        $requete -> execute(array($id));
+
+        // stocke la sequence dans une autre variable
+        while ($donnees = $requete->fetch())
+        {
+          $sequence = $donnees['sequence'];
+          $length = $donnees['length'];
+        }
+        if($_POST["fenetre"]!=""){
+          $fenetre = $_POST["fenetre"];
+        }else{
+          $fenetre = 9;
+        }
+      }
+
+      if (isset($sequence) AND isset($fenetre)) {
+        // $seq = wordwrap($sequence, 75, "<br>", true);
+        // echo $sequence;
+        exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
+      }
+    ?>
+
 <!-- entete de la page -->
     <div id="entete">
      <a href="Accueil.php">
@@ -39,65 +76,29 @@ session_start();
       </div>
 
       <hr>
-<!-- interrogation de la BD pour récupérer les infos sur la protéine -->
-      <p>La séquence protéique : </p>
+
+<!-- profil d'hydrophobicité -->
+      <h1>La séquence protéique :</h1>
       <p id="sequence" wrap=wrap>
+        <?php echo "Taille : $length acides aminées <br>$sequence";?></p>
 
-        <?php
-          $id = "BC1G_".$_SESSION['var'];
-          if($id != ""){
-            $bdd = new PDO('mysql:host=localhost;dbname=projetweb','barnadavy','fanfreluchedu91',
-    								array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-            $requete = $bdd -> prepare // query() si pas de variable
-    				('
-    					SELECT id_gene, sequence
-    					FROM protein
-    					WHERE id_gene = ?
-    				');
-
-            $requete -> execute(array($id));
-
-            // stocke la sequence dans une autre variable
-    				while ($donnees = $requete->fetch())
-    				{
-    					$sequence = $donnees['sequence'];
-    				}
-            if($_POST["fenetre"]!=""){
-              $fenetre = $_POST["fenetre"];
-            }else{
-              $fenetre = 9;
-            }
-
-
-    			}
-
-    			if (isset($sequence) AND isset($fenetre)) {
-            // $seq = wordwrap($sequence, 75, "<br>", true);
-    				echo $sequence;
-    				exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
-    		?>
-
-      </p>
-
+       <h1>Le profil d'hydrophobicité :</h1>
        <form action="info_prot.php" method="post">
-         Définir la fenetre : <input type="text" name="fenetre"
-           value=<?php
-           if($_POST["fenetre"]!=""){
-             echo $_POST["fenetre"];
-           }else{
-             echo "9";
-           } ?> maxlength="5" size="5">
-         <input type="submit" value="Go">
+         <p style="text-align:center">
+           Définir la fenetre : <input type="text" name="fenetre" value=
+           <?php
+             if($_POST["fenetre"]!=""){
+               echo $_POST["fenetre"];
+             }else{
+               echo "9";
+             } ?>
+            maxlength="5" size="5">
+            <input type="submit" value="Go">
+         </p>
          <div id="hydro">
-      				<img src="../img/rplot.jpg" >
+      				<img src="../img/rplot.jpg">
           </div>
         </form>
-
-    		<?php
-    			}
-
-        ?>
 
     </div>
 
