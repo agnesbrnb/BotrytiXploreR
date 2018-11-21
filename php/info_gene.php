@@ -2,6 +2,7 @@
 
 // Démarrage de la session pour conserver l'id du gène
 session_start();
+// $_SESSION['var']=$_POST['id'];
 
 ?>
 
@@ -11,6 +12,10 @@ session_start();
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
   </head>
+  <!-- Nom de la page -->
+  <script langage="java-script">
+    document.title = 'Gene | BotrytiXploreR';
+  </script>
 
   <body>
 
@@ -38,18 +43,29 @@ session_start();
         $fonction = $donnees['fonction'];
       }
 
-      // Recupere les id des genes ayant la meme fonction que le gene cible
-      $requete = $bdd -> prepare(
-        "select g1.locus
-        from gene g1, gene g2
-        where g1.locus = g2.locus AND
-        g1.fonction = g2.fonction AND
-        g2.locus = ?"
-      );
-      $requete -> execute(array($id));
+      // Recupere les id des genes ayant la meme fonction que le gene cible si
+      // la fonction n'est pas "predicted protein" ou "conserved hypothetical protein"
+      if($fonction != "predicted protein" &&
+        $fonction != "conserved hypothetical protein"){
+          $requete = $bdd -> prepare(
+          "select locus
+          from gene
+          where fonction = (SELECT fonction
+          from gene
+          where locus = ?)"
+        );
+        $requete -> execute(array($id));
 
-      while($donnes = $requete -> fetch()){
-        $gene_fct = $donnees['g1.locus'];
+        $gene_fct = "";
+        while($donnees = $requete -> fetch()){
+          if($gene_fct!=""){
+            $gene_fct = $gene_fct.", ".$donnees['locus'];
+          }else{
+            $gene_fct = $donnees['locus'];
+          }
+        }
+      }else{
+        $gene_fct = "La fonction n'est pas connue.";
       }
 
     }else{

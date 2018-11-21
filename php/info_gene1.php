@@ -12,6 +12,10 @@ $_SESSION['var']=$_POST['id'];
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
   </head>
+  <!-- Nom de la page -->
+  <script langage="java-script">
+    document.title = 'Gene | BotrytiXploreR';
+  </script>
 
   <body>
 

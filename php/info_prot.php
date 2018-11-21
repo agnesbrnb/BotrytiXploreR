@@ -11,6 +11,10 @@ session_start();
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
   </head>
+  <!-- Nom de la page -->
+  <script langage="java-script">
+    document.title = 'Protéine | BotrytiXploreR';
+  </script>
 
   <body>
 

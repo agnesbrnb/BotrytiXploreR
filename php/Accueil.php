@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="accueil.css">
+    <link rel="icon" href="../img/icon.png">
   </head>
+  <!-- Nom de la page -->
+  <script langage="java-script">
+    document.title = 'Accueil | BotrytiXploreR';
+  </script>
 
   <body>
 
