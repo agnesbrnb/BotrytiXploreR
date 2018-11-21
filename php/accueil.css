@@ -15,4 +15,8 @@ h1 {color: white; margin-left: 10px;}
 
 #form {color: white; margin-left: 10px;}
 
-#auteur{position: absolute; margin-left: 90%; bottom: 10px; }
+.auteur {
+    position: fixed;
+    bottom: 0;
+    margin-left: 90%;
+}

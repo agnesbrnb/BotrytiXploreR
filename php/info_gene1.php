@@ -118,7 +118,7 @@ $_SESSION['var']=$_POST['id'];
 
     </div>
 
-    <div id="retour">
+    <div class="auteur">
       <img src="../img/logo.png" alt="logo auteur" height="120" width="120" />
     </div>
 
