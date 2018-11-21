@@ -21,6 +21,7 @@ html {
 #menu a:hover .bulle { display: block; }
 #menu .gene{left: 400px;}
 #menu .prot{left: 480px;}
+#menu .blast{left: 580px;}
 
 #bandeau {text-align: left; margin-left: 15px;}
 

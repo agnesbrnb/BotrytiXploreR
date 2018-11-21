@@ -48,7 +48,7 @@ session_start();
       // la fonction n'est pas "predicted protein" ou "conserved hypothetical protein"
       if($fonction != "predicted protein" &&
         $fonction != "conserved hypothetical protein"){
-          
+
           $requete = $bdd -> prepare(
           "select locus
           from gene
@@ -95,6 +95,7 @@ session_start();
 
           <a href="info_gene.php">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
           <a href="info_prot.php">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
+          <a href="blast.php">Faire un Blast<img class="bulle blast" src="../img/bulle_blast.png" alt="Blast" /></a>
 
         </form>
 
