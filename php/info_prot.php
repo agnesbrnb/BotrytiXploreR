@@ -10,6 +10,7 @@ session_start();
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
+    <link rel="icon" href="../img/icon.png">
   </head>
   <!-- Nom de la page -->
   <script langage="java-script">
@@ -55,6 +56,7 @@ session_start();
       }
     ?>
 
+
 <!-- entete de la page -->
     <div id="entete">
      <a href="Accueil.php">
@@ -81,6 +83,7 @@ session_start();
 
       <hr>
 
+<!-- Corps de la page -->
 <!-- profil d'hydrophobicité -->
       <h1>La séquence protéique :</h1>
       <p id="sequence" wrap=wrap>

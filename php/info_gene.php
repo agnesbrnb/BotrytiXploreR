@@ -11,6 +11,7 @@ session_start();
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
+    <link rel="icon" href="../img/icon.png">
   </head>
   <!-- Nom de la page -->
   <script langage="java-script">
@@ -73,6 +74,7 @@ session_start();
     }
    ?>
 
+
 <!-- entete de la page -->
     <div id="entete">
      <a href="Accueil.php">
@@ -99,10 +101,11 @@ session_start();
 
       <hr>
 
-       <h1>
-          Voici les informations principales sur le gène : <br>
-        </h1>
+<!-- Corps de la page -->
 <!-- remplissage des informations sur le gène -->
+             <h1>
+                Les informations sur le gène : <br>
+              </h1>
         <p>
          Taille de la séquence : <b><?php echo $length; ?></b><br><br>
          Position de début du gène : <b><?php echo $start; ?></b><br><br>
