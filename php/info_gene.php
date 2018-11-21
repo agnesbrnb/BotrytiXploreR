@@ -48,28 +48,29 @@ session_start();
       // la fonction n'est pas "predicted protein" ou "conserved hypothetical protein"
       if($fonction != "predicted protein" &&
         $fonction != "conserved hypothetical protein"){
+          
           $requete = $bdd -> prepare(
           "select locus
           from gene
           where fonction = (SELECT fonction
           from gene
           where locus = ?)"
-        );
-        $requete -> execute(array($id));
+          );
+          $requete -> execute(array($id));
 
-        $gene_fct = "";
-        while($donnees = $requete -> fetch()){
-          if($gene_fct!=""){
-            $gene_fct = $gene_fct.", ".$donnees['locus'];
-          }else{
-            $gene_fct = $donnees['locus'];
+          $gene_fct = "";
+          while($donnees = $requete -> fetch()){
+            if($gene_fct!=""){
+              $gene_fct = $gene_fct.", ".$donnees['locus'];
+            }else{
+              $gene_fct = $donnees['locus'];
+            }
           }
-        }
       }else{
         $gene_fct = "La fonction n'est pas connue.";
       }
 
-    }else{
+      }else{
       echo "Erreur dans votre entrée";
     }
    ?>
