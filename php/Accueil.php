@@ -4,21 +4,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="accueil.css">
     <link rel="icon" href="../img/icon.png">
+    <title>Accueil | BotrytiXploreR</title>
   </head>
-  <!-- Nom de la page -->
-  <script langage="java-script">
-    document.title = 'Accueil | BotrytiXploreR';
-  </script>
 
   <body>
 
     <div id="entete">
-      <img src="../img/logo_log.png" alt="logo logiciel"/>
+      <img src="../img/logo_resize.png" alt="logo logiciel"/>
     </div>
 
     <div id="menu">
       <h1> Analyse du génome de <i>Botrytis cinerea</i>
-        <a href="https://fr.wikipedia.org/wiki/Botrytis_cinerea">
+        <a href="https://fr.wikipedia.org/wiki/Botrytis_cinerea" target="_blank">
           <img src="../img/wiki.png" alt="wiki" height="30" width="30"/></a>
       </h1>
 
@@ -34,10 +31,9 @@
       </div>
     </div>
 
-    <div id="auteur">
-      <a href="Accueil.php"><img src="../img/logo.png" alt="logo auteur" height="120" width="120" /></a>
+    <div class="auteur">
+      <img src="../img/logo.png" alt="logo auteur" height="120" width="120" />
     </div>
-
   </body>
 
 </html>

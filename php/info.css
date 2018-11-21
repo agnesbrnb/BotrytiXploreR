@@ -6,10 +6,14 @@ html {
   background-size: cover; /* version standardisée */
 }
 
-#entete{ position: absolute; margin-left: 10px; top: 5px; margin-bottom: 0px; z-index: 1;}
+#entete{
+  position: absolute;
+  margin-left: 10px; top: 5px;
+  margin-bottom: 0px; z-index: 1;}
 /*z-index donne un ordre de priorité pour l'affichage des éléments*/
 
-#menu { float: left; position: absolute;
+#menu {
+  float: left; position: absolute;
   margin-left: 10px; margin-top: 80px; margin-bottom: 20px;
   border-radius: 10px; -moz-border-radius:10px;
   -webkit-border-radius:10px;
@@ -23,16 +27,24 @@ html {
 #menu .prot{left: 480px;}
 #menu .blast{left: 580px;}
 
-#bandeau {text-align: left; margin-left: 15px;}
+#bandeau {
+  text-align: left;
+  margin-left: 15px;}
 
-#hydro {text-align: center; height: auto; width: auto; margin-bottom: 10px;}
+#hydro {
+  text-align: center;
+  height: auto; width: auto;
+  margin-bottom: 10px;}
 
-h1 {color: black; margin-left: 5px;, margin-top: 1px;
+h1 {
+  color: black;
+  margin-left: 5px;, margin-top: 1px;
   font-size: 20px; text-decoration: underline;}
 
 p {margin-left: 15px;}
 
-#sequence {margin-right: 50px;
+#sequence {
+  margin-right: 50px;
   font-family: "Courier New", Courier, serif;
   overflow-wrap: break-word;
   word-break:break-all;}

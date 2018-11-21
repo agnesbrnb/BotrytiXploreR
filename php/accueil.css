@@ -6,14 +6,24 @@ html {
   background-size: cover; /* version standardisée */
 }
 
-h1 {color: white; margin-left: 10px;}
+h1 {
+  color: white;
+  margin-left: 10px;}
 
-#entete{ position: absolute; margin-left: 10px; top: 10px;}
+#entete{
+  position: absolute;
+  margin-left: 30px;
+  top: 80px;}
 
-#menu { position: absolute; bottom: 33%; margin:0;
-  background-image:url(../img/bg_menu.png); height: 116px; width: 100%; }
+#menu {
+  position: absolute;
+  bottom: 33%; margin:0;
+  background-image:url(../img/bg_menu.png);
+  height: 116px; width: 100%; }
 
-#form {color: white; margin-left: 10px;}
+#form {
+  color: white;
+  margin-left: 10px;}
 
 .auteur {
     position: fixed;

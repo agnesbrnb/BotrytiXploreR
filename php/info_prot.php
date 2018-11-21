@@ -11,11 +11,8 @@ session_start();
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="info.css">
     <link rel="icon" href="../img/icon.png">
+    <title>Protéine | BotrytiXploreR</title>
   </head>
-  <!-- Nom de la page -->
-  <script langage="java-script">
-    document.title = 'Protéine | BotrytiXploreR';
-  </script>
 
   <body>
 
@@ -86,7 +83,7 @@ session_start();
 <!-- entete de la page -->
     <div id="entete">
      <a href="Accueil.php" title="Vers l'accueil">
-       <img src="../img/logo_log.png" alt="logo logiciel" height="80" width="320"/></a>
+       <img src="../img/logo_resize.png" alt="logo logiciel" height="80" width="320"/></a>
     </div>
 
     <div id="menu">
