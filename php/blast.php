@@ -20,7 +20,7 @@ session_start();
   <body>
 
     <div id="entete">
-     <a href="Accueil.php">
+     <a href="Accueil.php" title="Vers l'accueil">
        <img src="../img/logo_log.png" alt="logo logiciel" height="80" width="320"/></a>
     </div>
 
