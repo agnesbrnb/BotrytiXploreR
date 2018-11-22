@@ -49,7 +49,13 @@ session_start();
         if (isset($sequence) AND isset($fenetre)) {
           // $seq = wordwrap($sequence, 75, "<br>", true);
           // echo $sequence;
-          exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
+          $user = get_current_user();
+          if ($user == "martin") {    
+            echo $fenetre.$user;        
+            exec ("Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
+          }elseif ($user == "agnesb") {
+            exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
+          }
         }
 
         // Recupere les infos pfam
@@ -97,9 +103,9 @@ session_start();
             ?> maxlength="5" size="15">
           <input type="submit" value="Go !">
 
-          <a href="info_gene.php">Le gène<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
-          <a href="info_prot.php">La protéine<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
-          <a href="blast.php">Faire un Blast<img class="bulle blast" src="../img/bulle_blast.png" alt="Blast" /></a>
+          <a class="bouton" href="info_gene.php"> &nbsp Gène &nbsp<img class="bulle gene" src="../img/bulle_gene.png" alt="Gène" /></a>
+          <a class="bouton" href="info_prot.php">&nbsp Protéine &nbsp<img class="bulle prot" src="../img/bulle_prot.png" alt="Protéine" /></a>
+          <a class="bouton" href="blast.php">&nbsp Blast &nbsp<img class="bulle blast" src="../img/bulle_blast.png" alt="Blast" /></a>
 
         </form>
 
