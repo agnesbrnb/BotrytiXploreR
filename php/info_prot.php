@@ -50,8 +50,7 @@ session_start();
           // $seq = wordwrap($sequence, 75, "<br>", true);
           // echo $sequence;
           $user = get_current_user();
-          if ($user == "martin") {    
-            echo $fenetre.$user;        
+          if ($user == "martin") {       
             exec ("Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
           }elseif ($user == "agnesb") {
             exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
