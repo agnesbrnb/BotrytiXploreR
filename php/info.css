@@ -54,3 +54,33 @@ p {margin-left: 15px;}
     bottom: 0;
     margin-left: 90%;
 }
+
+
+.bouton{
+    font-family: Arial,sans-serif;
+    font-size: 1.6em;
+    width:  intrinsic;           /* Safari/WebKit utilisent un nom non-standard */
+    width:  -moz-max-content;    /* Firefox/Gecko */
+    height: 32px;
+    vertical-align: middle;
+    text-align: center;
+    color: Black;
+    background: Darkcyan;
+    border-radius: 8px;
+}
+
+.bouton:hover{
+  color: Black;
+  background: Cyan;
+}
+
+.bouton:active{
+    color: #000;
+    background: #444;
+    box-shadow: 1px 1px 10px black inset, 
+      0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+.bouton:link{
+  text-decoration: none;
+}
