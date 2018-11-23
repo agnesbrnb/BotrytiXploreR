@@ -1,3 +1,4 @@
+/* Mise en page générale */
 html {
   margin:0;
   padding:0;
@@ -6,6 +7,20 @@ html {
   background-size: cover; /* version standardisée */
 }
 
+h1 {
+  color: black;
+  margin-left: 5px;, margin-top: 1px;
+  font-size: 20px; text-decoration: underline;}
+
+p {margin-left: 15px;}
+
+.auteur {
+    position: fixed;
+    bottom: 0;
+    margin-left: 90%;
+}
+
+/* Zones de la page */
 #entete{
   position: absolute;
   margin-left: 10px; top: 5px;
@@ -19,49 +34,27 @@ html {
   -webkit-border-radius:10px;
   background-color: lightgrey; height: auto; width: 73%; }
 
-/* Insertion des bulles au dessus des liens */
-#menu a { margin-left: 25px; }
-#menu .bulle { display: none; position: absolute; top: -65px; z-index: 2;}
-#menu a:hover .bulle { display: block; }
-#menu .gene{left: 400px;}
-#menu .prot{left: 480px;}
-#menu .blast{left: 580px;}
 
 #bandeau {
   text-align: left;
   margin-left: 15px;}
 
-#hydro {
-  text-align: center;
-  height: auto; width: auto;
-  margin-bottom: 10px;}
+/* Insertion des bulles au dessus des liens */
+#menu a { margin-left: 25px; }
+#menu .bulle { display: none; position: absolute; top: -65px; z-index: 2;}
+#menu a:hover .bulle { display: block; }
+#menu .gene{left: 410px;}
+#menu .prot{left: 510px;}
+#menu .blast{left: 580px;}
 
-h1 {
-  color: black;
-  margin-left: 5px;, margin-top: 1px;
-  font-size: 20px; text-decoration: underline;}
-
-p {margin-left: 15px;}
-
-#sequence {
-  margin-right: 50px;
-  font-family: "Courier New", Courier, serif;
-  overflow-wrap: break-word;
-  word-break:break-all;}
-
-.auteur {
-    position: fixed;
-    bottom: 0;
-    margin-left: 90%;
-}
-
+/* Boutons dans le bandeau */
 
 .bouton{
     font-family: Arial,sans-serif;
-    font-size: 1.6em;
+    font-size: 16px;
     width:  intrinsic;           /* Safari/WebKit utilisent un nom non-standard */
     width:  -moz-max-content;    /* Firefox/Gecko */
-    height: 32px;
+    height: 20px;
     vertical-align: middle;
     text-align: center;
     color: Black;
@@ -77,7 +70,7 @@ p {margin-left: 15px;}
 .bouton:active{
     color: #000;
     background: #444;
-    box-shadow: 1px 1px 10px black inset, 
+    box-shadow: 1px 1px 10px black inset,
       0 1px 0 rgba( 255, 255, 255, 0.4);
 }
 

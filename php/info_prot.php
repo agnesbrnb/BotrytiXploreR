@@ -16,6 +16,19 @@ session_start();
 
   <body>
 
+<!-- Style CSS pour le profil d'hydrophobicité et la séquence -->
+    <style>
+      #sequence {
+        margin-right: 50px;
+        font-family: "Courier New", Courier, serif;
+        overflow-wrap: break-word;
+        word-break:break-all;}
+        
+      #hydro {
+        text-align: center;
+        height: auto; width: auto;
+        margin-bottom: 10px;}
+    </style>
 <!-- code php base de données -->
     <?php
       $id = "BC1G_".$_SESSION['var'];
@@ -50,7 +63,7 @@ session_start();
           // $seq = wordwrap($sequence, 75, "<br>", true);
           // echo $sequence;
           $user = get_current_user();
-          if ($user == "martin") {       
+          if ($user == "martin") {
             exec ("Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
           }elseif ($user == "agnesb") {
             exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
