@@ -16,21 +16,11 @@ session_start();
 
   <body>
 
-    <div id="entete">
-     <a href="Accueil.php" title="Vers l'accueil">
-       <img src="../img/logo_resize.png" alt="logo logiciel" height="80" width="320"/></a>
-    </div>
+    <?php
+      include "./bandeau_blast.php";
+     ?>
 
     <div id="menu">
-      <div id="bandeau">
-        <form action="info_gene1.php" method="post">
-          Chercher un gène : BC1G_<input type="text" name="id"
-            value=<?php
-              if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}
-            ?> maxlength="5" size="15">
-          <input type="submit" value="Go !">
-        </form>
-      </div>
 
       <hr>
 

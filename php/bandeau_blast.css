@@ -1,0 +1,17 @@
+form{
+  margin-left: 15px;
+}
+
+/* Supprime la marge présente par défaut pour coller les blocs bandeau et menu */
+body, .menu ul{
+ margin: 0;
+ padding:0;
+}
+
+#bandeau {
+  color: white; text-align: left;
+  margin-left: 10px; margin-top: 100px; margin-bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: black;
+  height: 30px; width: 73%;}

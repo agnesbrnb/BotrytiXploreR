@@ -1,0 +1,21 @@
+html {
+  margin:0;
+  padding:0;
+  background: url(../img/adn_builder.jpg) no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
+/* Zones de la page */
+#entete{
+  position: absolute;
+  margin-left: 10px; top: 5px;
+  margin-bottom: 0px; z-index: 1;}
+
+
+.auteur {
+    position: fixed;
+    bottom: 0;
+    margin-left: 90%;
+}
+/*z-index donne un ordre de priorité pour l'affichage des éléments*/

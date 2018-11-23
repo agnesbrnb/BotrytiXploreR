@@ -1,11 +1,4 @@
 /* Mise en page générale */
-html {
-  margin:0;
-  padding:0;
-  background: url(../img/adn_builder.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-}
 
 h1 {
   color: black;
@@ -14,66 +7,10 @@ h1 {
 
 p {margin-left: 15px;}
 
-.auteur {
-    position: fixed;
-    bottom: 0;
-    margin-left: 90%;
-}
-
-/* Zones de la page */
-#entete{
-  position: absolute;
-  margin-left: 10px; top: 5px;
-  margin-bottom: 0px; z-index: 1;}
-/*z-index donne un ordre de priorité pour l'affichage des éléments*/
 
 #menu {
-  float: left; position: absolute;
-  margin-left: 10px; margin-top: 80px; margin-bottom: 20px;
-  border-radius: 10px; -moz-border-radius:10px;
-  -webkit-border-radius:10px;
+  position: absolute;
+  margin-left: 10px; margin-top: 100;margin-bottom: 20px;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius: 10px;
   background-color: lightgrey; height: auto; width: 73%; }
-
-
-#bandeau {
-  text-align: left;
-  margin-left: 15px;}
-
-/* Insertion des bulles au dessus des liens */
-#menu a { margin-left: 25px; }
-#menu .bulle { display: none; position: absolute; top: -65px; z-index: 2;}
-#menu a:hover .bulle { display: block; }
-#menu .gene{left: 410px;}
-#menu .prot{left: 510px;}
-#menu .blast{left: 580px;}
-
-/* Boutons dans le bandeau */
-
-.bouton{
-    font-family: Arial,sans-serif;
-    font-size: 16px;
-    width:  intrinsic;           /* Safari/WebKit utilisent un nom non-standard */
-    width:  -moz-max-content;    /* Firefox/Gecko */
-    height: 20px;
-    vertical-align: middle;
-    text-align: center;
-    color: Black;
-    background: Darkcyan;
-    border-radius: 8px;
-}
-
-.bouton:hover{
-  color: Black;
-  background: Cyan;
-}
-
-.bouton:active{
-    color: #000;
-    background: #444;
-    box-shadow: 1px 1px 10px black inset,
-      0 1px 0 rgba( 255, 255, 255, 0.4);
-}
-
-.bouton:link{
-  text-decoration: none;
-}
