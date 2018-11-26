@@ -13,9 +13,11 @@ session_start();
   </head>
 
   <body>
+
     <?php
       include "./menu.php";
      ?>
+
     <div id="bandeau">
 
       <form action="info_gene1.php" method="post">
@@ -26,5 +28,6 @@ session_start();
         <input type="submit" value="Go !">
       </form>
     </div>
+    
   </body>
 </html>

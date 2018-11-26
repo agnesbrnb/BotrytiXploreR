@@ -18,21 +18,20 @@ session_start();
 
     <?php
       include "./bandeau_blast.php";
-     ?>
+      include "./blast_connect.php";
+    ?>
 
     <div id="menu">
-
       <hr>
 
       <h1>Recherche de séquence par Blast</h1>
-      <p>Cette recherche de séquence s'effectue sur la base des gènes de
-        <i>Botrytis cinerea</i>. Entrez votre séquence ci-dessous :</p>
+      <p>Résultat de votre recherche sur la base des gènes de
+        <i>Botrytis cinerea</i>. </p>
 
-      <form action="blast_rep.php" method="post">
-        <textarea id="seq" name="seq" rows="20" cols="100"
-        style="margin-left:10px" placeholder=" Votre séquence ..."></textarea>
+      <?php include "./table_blast.php"; ?>
 
-        <input type="submit" value="Blaster !">
+      <form action="blast.php" method="post" style="margin-bottom:10px">
+        <input type="submit" value="Etape précédente">
       </form>
 
     </div>
