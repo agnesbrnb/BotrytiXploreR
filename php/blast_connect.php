@@ -15,8 +15,12 @@ session_start();
       $seq = "";
       // Explosion de seq en fonction des \n
       $fasta = explode("\n", $_POST['seq']);
+
       // creation / "ecrasement" de query.fasta
-      $query_file = fopen('query.fasta', 'w');
+      $path_to_query = "../tmp/query.fasta";
+      $path_to_res = "../tmp/result.blastp";
+
+      $query_file = fopen("$path_to_query", 'w');
 
       // Boucle sur les "morceaux" de l'explosion
       for ($i=0; $i < sizeof($fasta); $i++)
@@ -57,15 +61,15 @@ session_start();
       // Realisation du blast
       $user = get_current_user();
       if ($user == "martin") {
-        exec ("blastp -query query.fasta -db ../bd/prot_db/botrytis_prot_db -out result.blastp");
+        exec ("blastp -query $path_to_query -db ../bd/prot_db/botrytis_prot_db -out $path_to_res");
 
       }elseif ($user == "agnesb") {
-        exec ("/usr/local/bin/blastp -query query.fasta -db ../bd/prot_db/botrytis_prot_db -out result.blastp");
+        exec ("/usr/local/bin/blastp -query $path_to_query -db ../bd/prot_db/botrytis_prot_db -out $path_to_res");
       }
 
       // Affichage du resultat blast
       // ouverture du blastp
-      $blastp_file = fopen('result.blastp', 'r');
+      $blastp_file = fopen("$path_to_res", 'r');
       $ligne = "";
       $result = array();
       // Lecture jusqu'aux resultats

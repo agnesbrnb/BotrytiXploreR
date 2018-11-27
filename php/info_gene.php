@@ -20,7 +20,7 @@ session_start();
 
     <?php
       include "./sql_gene.php";
-      include bandeau.php
+      include "./bandeau.php";
     ?>
 
     <div id="menu">
