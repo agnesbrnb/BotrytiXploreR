@@ -41,9 +41,10 @@ session_start();
           from gene
           where fonction = (SELECT fonction
           from gene
-          where locus = ?)"
+          where locus = ?) and
+          locus != ?"
         );
-        $requete -> execute(array($id));
+        $requete -> execute(array($id, $id));
 
         $gene_fct = "";
         while($donnees = $requete -> fetch()){
