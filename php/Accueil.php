@@ -20,10 +20,10 @@
       </h1>
 
       <div id="form">
-        <form action="info_gene1.php" method="post">
+        <form action ="" method="post">
           Recherche par ID du locus : BC1G_<input type="text" name="id"
             value="00001" maxlength="5">
-          <input type="submit" value="Rechercher">
+          <input type="submit" value="Rechercher" formaction="info_gene1.php">
 
           ou Recherche par BLAST <input type="submit" value="GO" formaction="blast.php">
 
