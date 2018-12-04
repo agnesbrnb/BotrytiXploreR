@@ -16,14 +16,6 @@ body, .menu ul{
   background-color: black;
   height: 30px; width: 73%;}
 
-/* Insertion des bulles au dessus des liens */
-#bandeau a { margin-left: 25px; }
-#bandeau .bulle { display: none; position: absolute; top: -65px; z-index: 2;}
-#bandeau a:hover .bulle { display: block; }
-#bandeau .gene{left: 410px;}
-#bandeau .prot{left: 510px;}
-#bandeau .blast{left: 580px;}
-
 /* Boutons dans le bandeau */
 
 .bouton{

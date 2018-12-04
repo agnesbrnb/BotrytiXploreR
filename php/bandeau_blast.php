@@ -20,7 +20,7 @@ session_start();
 
     <div id="bandeau">
 
-      <form action="info_gene1.php" method="post">
+      <form action="info_gene1.php" method="get">
         Chercher un gène : BC1G_<input type="text" name="id"
           value=<?php
             if($_SESSION['var']!=""){echo $_SESSION['var'];}else{echo "00001";}
@@ -28,6 +28,6 @@ session_start();
         <input type="submit" value="Go !">
       </form>
     </div>
-    
+
   </body>
 </html>
