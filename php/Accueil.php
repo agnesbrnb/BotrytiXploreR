@@ -3,6 +3,7 @@
 // Démarrage de la session pour conserver l'id du gène
 session_start();
 $_SESSION['user']=get_current_user();
+$_SESSION['var']="00001";
 
 ?>
 
