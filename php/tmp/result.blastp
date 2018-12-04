@@ -1,0 +1,12 @@
+# BLASTP 2.7.1+
+# Query: gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]
+# Database: ../bd/prot_db/botrytis_prot_db
+# Fields: subject title, evalue
+# 6 hits found
+| BC1G_04720 | Botrytis cinerea (B05.10) xylulose kinase (586 aa)	0.84
+| BC1G_14347 | Botrytis cinerea (B05.10) hypothetical protein similar to DUF221 family protein (1274 aa)	0.89
+| BC1G_13730 | Botrytis cinerea (B05.10) transcriptional activator HAP2 (345 aa)	1.7
+| BC1G_13174 | Botrytis cinerea (B05.10) predicted protein (83 aa)	2.1
+| BC1G_01828 | Botrytis cinerea (B05.10) hypothetical protein similar to pseudouridylate synthase 3 (576 aa)	6.3
+| BC1G_12105 | Botrytis cinerea (B05.10) predicted protein (616 aa)	7.5
+# BLAST processed 1 queries

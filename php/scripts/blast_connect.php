@@ -18,8 +18,8 @@ session_start();
       $fasta = explode("\n", $_POST['seq']);
 
       // creation / "ecrasement" de query.fasta
-      $path_to_query = "../tmp/query.fasta";
-      $path_to_res = "../tmp/result.blastp";
+      $path_to_query = "./tmp/query.fasta";
+      $path_to_res = "./tmp/result.blastp";
 
       $query_file = fopen("$path_to_query", 'w');
 

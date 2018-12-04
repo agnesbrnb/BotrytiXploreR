@@ -9,7 +9,7 @@ session_start();
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="info.css">
+    <link rel="stylesheet" type="text/css" href="../css/info.css">
     <link rel="icon" href="../img/icon.png">
     <title>Protéine | BotrytiXploreR</title>
   </head>
@@ -31,8 +31,8 @@ session_start();
     </style>
 
     <?php
-      include "./sql_prot.php";
-      include "./bandeau.php";
+      include "./scripts/sql_prot.php";
+      include "./mep/bandeau.php";
     ?>
 
     <div id="menu">
@@ -67,7 +67,7 @@ session_start();
 
         <h1>Informations sur les domaines (source : Pfam) :</h1>
 
-        <?php include "./table_pfam.php"; ?>
+        <?php include "./scripts/table_pfam.php"; ?>
 
     </div>
 

@@ -9,7 +9,7 @@ session_start();
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="info.css">
+    <link rel="stylesheet" type="text/css" href="../css/info.css">
     <link rel="icon" href="../img/icon.png">
     <title>Blast | BotrytiXploreR</title>
   </head>
@@ -17,7 +17,7 @@ session_start();
   <body>
 
     <?php
-      include "./bandeau_blast.php";
+      include "./mep/bandeau_blast.php";
      ?>
 
     <div id="menu">

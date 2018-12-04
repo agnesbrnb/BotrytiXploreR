@@ -35,9 +35,9 @@
           // $seq = wordwrap($sequence, 75, "<br>", true);
           // echo $sequence;
           if ($_SESSION['user'] == "martin") {
-            exec ("Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
+            exec ("Rscript ./profil_hydro.R $sequence $fenetre");
           }elseif ($_SESSION['user'] == "agnesb") {
-            exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
+            exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/php/scripts/profil_hydro.R $sequence $fenetre");
           }
         }
 

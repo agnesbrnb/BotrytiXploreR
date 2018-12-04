@@ -17,8 +17,8 @@ session_start();
   <body>
 
     <?php
-      include "./bandeau_blast.php";
-      include "./blast_connect.php";
+      include "./mep/bandeau_blast.php";
+      include "./scripts/blast_connect.php";
     ?>
 
     <div id="menu">
@@ -28,7 +28,7 @@ session_start();
       <p>Résultat de votre recherche sur la base de données de
         <i>Botrytis cinerea</i>. </p>
 
-      <?php include "./table_blast.php"; ?>
+      <?php include "./scripts/table_blast.php"; ?>
 
       <form action="blast.php" method="post" style="margin-bottom:10px">
         <input type="submit" value="Etape précédente">

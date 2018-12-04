@@ -10,7 +10,7 @@ $_SESSION['var']=$_GET['id'];
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="info.css">
+    <link rel="stylesheet" type="text/css" href="../css/info.css">
     <link rel="icon" href="../img/icon.png">
     <title>Gene | BotrytiXploreR</title>
   </head>
@@ -18,8 +18,8 @@ $_SESSION['var']=$_GET['id'];
   <body>
 
     <?php
-      include "./sql_gene.php";
-      include "./bandeau.php";
+      include "./scripts/sql_gene.php";
+      include "./mep/bandeau.php";
     ?>
 
     <div id="menu">
