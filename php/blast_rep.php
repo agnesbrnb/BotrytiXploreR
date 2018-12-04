@@ -25,7 +25,7 @@ session_start();
       <hr>
 
       <h1>Recherche de séquence par Blast</h1>
-      <p>Résultat de votre recherche sur la base des gènes de
+      <p>Résultat de votre recherche sur la base de données de
         <i>Botrytis cinerea</i>. </p>
 
       <?php include "./table_blast.php"; ?>
