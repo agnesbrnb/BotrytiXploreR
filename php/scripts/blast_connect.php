@@ -59,12 +59,14 @@ session_start();
       // fermeture
       fclose($query_file);
 
+      $format["prot"] = "\"7 stitle evalue\"";
+      $format["nucl"] = "\"7 sseqid stitle evalue\"";
       // Realisation du blast
       if ($_SESSION['user'] == "martin") {
-        exec ("blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -out $path_to_res");
+        exec ("blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -outfmt ".$format[$type]." -out $path_to_res");
 
       }elseif ($_SESSION['user'] == "agnesb") {
-        exec ("/usr/local/bin/blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -outfmt \"7 stitle evalue\" -out $path_to_res");
+        exec ("/usr/local/bin/blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -outfmt ".$format[$type]." -out $path_to_res");
       }
 
       // Affichage du resultat blast
@@ -82,7 +84,10 @@ session_start();
       while ($ligne[0] != "#")
       {
         // Stock id
-        $hits[$i]["locus"] = substr($ligne, 2, 10);
+        $pattern = "(BC1G_.....)";
+        preg_match($pattern, $ligne, $matches);
+        $hits[$i]["locus"] = $matches[0];
+
         // Stock le hit
         $tmp = explode(")", $ligne);
         $hits[$i]["fonction"] = $tmp[1].")";
