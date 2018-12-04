@@ -66,7 +66,7 @@ session_start();
         </form>
 
         <h1>Informations sur les domaines (source : Pfam) :</h1>
-        
+
         <?php include "./table_pfam.php"; ?>
 
     </div>
