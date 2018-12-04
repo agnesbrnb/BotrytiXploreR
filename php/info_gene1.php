@@ -2,7 +2,7 @@
 
 // Démarrage de la session pour conserver l'id du gène
 session_start();
-$_SESSION['var']=$_POST['id'];
+$_SESSION['var']=$_GET['id'];
 
 ?>
 

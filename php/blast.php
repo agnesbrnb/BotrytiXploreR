@@ -31,6 +31,12 @@ session_start();
       <form action="blast_rep.php" method="post">
         <textarea id="seq" name="seq" rows="20" cols="100"
         style="margin-left:10px" placeholder=" Votre séquence ..."></textarea>
+        <br>
+
+        <select name="type_blast">
+          <option value="prot">Protéine</option>
+          <option value="nucl">ADN</option>
+        </select>
 
         <input type="submit" value="Blaster !">
       </form>

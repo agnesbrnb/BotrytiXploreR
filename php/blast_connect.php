@@ -13,6 +13,7 @@ session_start();
     {
       // initialisation de la sequence
       $seq = "";
+      $type = $_POST['type_blast'];
       // Explosion de seq en fonction des \n
       $fasta = explode("\n", $_POST['seq']);
 
@@ -59,37 +60,36 @@ session_start();
       fclose($query_file);
 
       // Realisation du blast
-      $user = get_current_user();
-      if ($user == "martin") {
-        exec ("blastp -query $path_to_query -db ../bd/prot_db/botrytis_prot_db -out $path_to_res");
+      if ($_SESSION['user'] == "martin") {
+        exec ("blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -out $path_to_res");
 
-      }elseif ($user == "agnesb") {
-        exec ("/usr/local/bin/blastp -query $path_to_query -db ../bd/prot_db/botrytis_prot_db -out $path_to_res");
+      }elseif ($_SESSION['user'] == "agnesb") {
+        exec ("/usr/local/bin/blast".$type[0]." -query $path_to_query -db ../bd/".$type."_db/botrytis_".$type."_db -outfmt \"7 stitle evalue\" -out $path_to_res");
       }
 
       // Affichage du resultat blast
       // ouverture du blastp
       $blastp_file = fopen("$path_to_res", 'r');
-      $ligne = "";
+      $ligne = fgets($blastp_file);
       $result = array();
       // Lecture jusqu'aux resultats
-      while (substr($ligne, 0, 9) != "Sequences")
+      while ($ligne[0] == "#")
       {
         $ligne = fgets($blastp_file);
       }
-      // Saute la ligne vide
-      $ligne = fgets($blastp_file);
-      $ligne = fgets($blastp_file);
-      $hits  = array();
+      $hits  = array(); $i=0;
 
-      $table_ligne = array(); $i=0;
-
-      while ($ligne != "\n")
+      while ($ligne[0] != "#")
       {
-        $ligne = fgets($blastp_file);
-        $table_ligne[$i] = $ligne;
-        $hits["gene_id"] = substr($ligne, 14, 25);
+        // Stock id
+        $hits[$i]["locus"] = substr($ligne, 2, 10);
+        // Stock le hit
+        $tmp = explode(")", $ligne);
+        $hits[$i]["fonction"] = $tmp[1].")";
+        $hits[$i]["evalue"] = $tmp[2];
+
         $i++;
+        $ligne = fgets($blastp_file);
       }
 
     }

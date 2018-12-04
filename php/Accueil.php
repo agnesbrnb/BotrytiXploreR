@@ -1,3 +1,11 @@
+<?php
+
+// Démarrage de la session pour conserver l'id du gène
+session_start();
+$_SESSION['user']=get_current_user();
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,7 +28,7 @@
       </h1>
 
       <div id="form">
-        <form action ="" method="post">
+        <form action ="" method="get">
           Recherche par ID du locus : BC1G_<input type="text" name="id"
             value="00001" maxlength="5">
           <input type="submit" value="Rechercher" formaction="info_gene1.php">

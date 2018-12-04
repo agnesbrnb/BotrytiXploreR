@@ -34,10 +34,9 @@
         if (isset($sequence) AND isset($fenetre)) {
           // $seq = wordwrap($sequence, 75, "<br>", true);
           // echo $sequence;
-          $user = get_current_user();
-          if ($user == "martin") {
+          if ($_SESSION['user'] == "martin") {
             exec ("Rscript ../Profil_hydro/profil_hydro.R $sequence $fenetre");
-          }elseif ($user == "agnesb") {
+          }elseif ($_SESSION['user'] == "agnesb") {
             exec ("/usr/local/bin/Rscript /Users/agnesb/Sites/projet-web/Profil_hydro/profil_hydro.R $sequence $fenetre");
           }
         }
