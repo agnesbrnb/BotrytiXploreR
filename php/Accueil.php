@@ -11,7 +11,7 @@ $_SESSION['var']="00001";
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="accueil.css">
+    <link rel="stylesheet" type="text/css" href="../css/accueil.css">
     <link rel="icon" href="../img/icon.png">
     <title>Accueil | BotrytiXploreR</title>
   </head>
@@ -29,14 +29,14 @@ $_SESSION['var']="00001";
       </h1>
 
       <div id="form">
-        <form action ="" method="get">
-          Recherche par ID du locus : BC1G_<input type="text" name="id"
-            value="00001" maxlength="5">
-          <input type="submit" value="Rechercher" formaction="info_gene1.php">
 
-          ou Recherche par BLAST <input type="submit" value="GO" formaction="blast.php">
-
-        </form>
+        <p>Que souhaitez vous faire ?</p>
+        <a href="info_gene1.php?id=00001"><img src="../img/gene.png" alt="info_gene"
+          height="100" width="100" title="Chercher un gène" /></a>
+        <a href="blast.php"><img src="../img/blast.png" alt="faire_blast"
+          height="105" width="105" title="Faire un blast"/></a>
+        <a href="info_fct.php"><img src="../img/fonction.png" alt="info_fct"
+          height="100" width="100" title="Chercher une fonction"/></a>
       </div>
     </div>
 

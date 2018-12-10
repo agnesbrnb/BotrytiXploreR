@@ -12,7 +12,7 @@
     <div id="bandeau">
 
       <form action="info_gene1.php" method="get">
-        Chercher un autre gène : BC1G_<input type="text" name="id"
+        Chercher un gène : BC1G_<input type="text" name="id"
           value=<?php
             if($_SESSION['var']!=""){
               echo $_SESSION['var'];

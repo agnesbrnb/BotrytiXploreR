@@ -1,12 +1,18 @@
 # BLASTP 2.7.1+
-# Query: gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]
+# Query: sp|Q8WVM7|STAG1_HUMAN Cohesin subunit SA-1 OS=Homo sapiens OX=9606 GN=STAG1 PE=1 SV=3
 # Database: ../bd/prot_db/botrytis_prot_db
 # Fields: subject title, evalue
-# 6 hits found
-| BC1G_04720 | Botrytis cinerea (B05.10) xylulose kinase (586 aa)	0.84
-| BC1G_14347 | Botrytis cinerea (B05.10) hypothetical protein similar to DUF221 family protein (1274 aa)	0.89
-| BC1G_13730 | Botrytis cinerea (B05.10) transcriptional activator HAP2 (345 aa)	1.7
-| BC1G_13174 | Botrytis cinerea (B05.10) predicted protein (83 aa)	2.1
-| BC1G_01828 | Botrytis cinerea (B05.10) hypothetical protein similar to pseudouridylate synthase 3 (576 aa)	6.3
-| BC1G_12105 | Botrytis cinerea (B05.10) predicted protein (616 aa)	7.5
+# 12 hits found
+| BC1G_08934 | Botrytis cinerea (B05.10) conserved hypothetical protein (903 aa)	6.21e-18
+| BC1G_05309 | Botrytis cinerea (B05.10) hypothetical protein similar to mutant protein of TTG1 (668 aa)	0.25
+| BC1G_05719 | Botrytis cinerea (B05.10) predicted protein (365 aa)	0.60
+| BC1G_10849 | Botrytis cinerea (B05.10) conserved hypothetical protein (544 aa)	0.70
+| BC1G_12203 | Botrytis cinerea (B05.10) predicted protein (1007 aa)	1.6
+| BC1G_05179 | Botrytis cinerea (B05.10) mRNA-capping enzyme subunit beta (413 aa)	1.7
+| BC1G_06882 | Botrytis cinerea (B05.10) histidine permease (554 aa)	1.9
+| BC1G_09952 | Botrytis cinerea (B05.10) predicted protein (282 aa)	3.2
+| BC1G_13019 | Botrytis cinerea (B05.10) predicted protein (1460 aa)	4.2
+| BC1G_03210 | Botrytis cinerea (B05.10) predicted protein (41 aa)	4.7
+| BC1G_10111 | Botrytis cinerea (B05.10) predicted protein (509 aa)	8.0
+| BC1G_11798 | Botrytis cinerea (B05.10) SNF2 family ATP-dependent chromatin-remodeling factor snf21 (1434 aa)	8.9
 # BLAST processed 1 queries
