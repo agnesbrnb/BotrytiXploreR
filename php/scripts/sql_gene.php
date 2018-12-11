@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<?php
-
-// Démarrage de la session pour conserver l'id du gène
-session_start();
-
-?>
-
 <!-- code php interrogation de la BD pour récupérer les infos du gène -->
   <?php
     $id = "BC1G_".$_SESSION['var'];

@@ -18,6 +18,7 @@ $_SESSION['var']="00001";
 
   <body>
 
+<!-- Website's logo -->
     <div id="entete">
       <img src="../img/logo_resize.png" alt="logo logiciel"/>
     </div>
@@ -29,7 +30,8 @@ $_SESSION['var']="00001";
       </h1>
 
       <div id="form">
-
+        
+<!-- Link to other pages -->
         <p>Que souhaitez vous faire ?</p>
         <a href="info_gene1.php?id=00001"><img src="../img/gene.png" alt="info_gene"
           height="100" width="100" title="Chercher un gène" /></a>
