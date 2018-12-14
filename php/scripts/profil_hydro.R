@@ -25,7 +25,7 @@ profil_hydrophobicite <- function(seq,w){
     }
   }
   # return(score)
-  jpeg("../../img/rplot.jpg")
+  jpeg("../img/rplot.jpg")
   plot(x = absc, y = score[(floor(w/2) + 1) : (length(seq) - floor(w/2) - 1)], xlim = c(ceiling(w/2),length(seq)-ceiling(w/2)),xlab = "Position", ylab = "Score", type = "l")
   abline(h = 0, col = "RED", lty = 2)
   dev.off()

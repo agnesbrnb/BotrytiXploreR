@@ -9,26 +9,12 @@ session_start();
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/info.css">
+    <link rel="stylesheet" type="text/css" href="../css/info_prot.css">
     <link rel="icon" href="../img/icon.png">
     <title>Protéine | BotrytiXploreR</title>
   </head>
 
   <body>
-
-<!-- Style CSS pour le profil d'hydrophobicité et la séquence -->
-    <style>
-      #sequence {
-        margin-right: 50px;
-        font-family: "Courier New", Courier, serif;
-        overflow-wrap: break-word;
-        word-break:break-all;}
-
-      #hydro {
-        text-align: center;
-        height: auto; width: auto;
-        margin-bottom: 10px;}
-    </style>
 
     <?php
       include "./scripts/sql_prot.php";

@@ -1,0 +1,12 @@
+@import "./info.css";
+
+#sequence {
+  margin-right: 50px;
+  font-family: "Courier New", Courier, serif;
+  overflow-wrap: break-word;
+  word-break:break-all;}
+
+#hydro {
+  text-align: center;
+  height: auto; width: auto;
+  margin-bottom: 10px;}
