@@ -9,13 +9,11 @@
               array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
       // Recupere les informations sur le gène
-      $requete = $bdd -> prepare(
+      $requete = $bdd -> query(
         "select length, start, stop, fonction
          from gene
-         where locus = ?"
+         where locus = '$id'"
        );
-
-       $requete -> execute(array($id));
 
       while ($donnees = $requete->fetch())
       {
@@ -29,15 +27,14 @@
       // la fonction n'est pas "predicted protein" ou "conserved hypothetical protein"
       if($fonction != "predicted protein" &&
         $fonction != "conserved hypothetical protein"){
-          $requete = $bdd -> prepare(
+          $requete = $bdd -> query(
           "select locus
           from gene
           where fonction = (SELECT fonction
           from gene
-          where locus = ?) and
-          locus != ?"
+          where locus = '$id') and
+          locus != '$id'"
         );
-        $requete -> execute(array($id, $id));
 
         $gene_fct = "";
         while($donnees = $requete -> fetch()){

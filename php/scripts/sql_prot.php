@@ -9,14 +9,11 @@
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
         // Recupérer la séquence et le profil d'hydrophobicité
-        $requete = $bdd -> prepare // query() si pas de variable
-        ('
+        $requete = $bdd -> query ("
           SELECT sequence, length
           FROM protein
-          WHERE id_gene = ?
-        ');
-
-        $requete -> execute(array($id));
+          WHERE id_gene = '$id'
+        ");
 
         // stocke la sequence dans une autre variable
         while ($donnees = $requete->fetch())
@@ -40,14 +37,11 @@
         }
 
         // Recupere les infos pfam
-        $requete = $bdd -> prepare // query() si pas de variable
-        ('
+        $requete = $bdd -> query ("
           SELECT *
           FROM pfam
-          WHERE locus = ?
-        ');
-
-        $requete -> execute(array($id));
+          WHERE locus = '$id'
+        ");
 
         // initialisation des valeurs du tableau
         $pfam = array(); $i=0;

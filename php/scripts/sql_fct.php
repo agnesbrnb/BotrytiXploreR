@@ -9,18 +9,17 @@
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
         // Recupere les informations sur le gène
-        $requete = $bdd -> prepare(
-          "select locus
+        $requete = $bdd -> query(
+          "select locus, fonction
            from gene
-           where fonction LIKE '%?%'"
+           where fonction LIKE '%$fct%'"
          );
-
-         $requete -> execute(array($fct));
 
         $list_locus = array(); $i=0;
         while ($donnees = $requete->fetch())
         {
-          $list_locus[$i]=$donnees['locus'];
+          $list_locus[$i]["locus"]=$donnees['locus'];
+          $list_locus[$i]["fonction"]=$donnees["fonction"];
           $i++;
         }
       }

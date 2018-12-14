@@ -33,11 +33,8 @@ session_start();
 
         <p>
           <?php
-          echo $fct;
-            $rows = count($list_locus);
-            for($row=0; $row<$rows; $row++ ){
-              echo $list_locus[$row]."\n";
-            }
+            echo "Nombre de gènes : ".count($list_locus);
+            include "./scripts/table_fct.php";
            ?>
        </p>
 
