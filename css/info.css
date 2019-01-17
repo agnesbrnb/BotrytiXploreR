@@ -7,6 +7,9 @@ h1 {
 
 p {margin-left: 15px;}
 
+#sequence {
+  overflow-wrap: break-word;
+  word-break:break-all;}
 
 #menu {
   position: absolute;

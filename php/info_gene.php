@@ -31,7 +31,7 @@ session_start();
              <h1>
                 Les informations sur le gène : <br>
               </h1>
-        <p>
+        <p id="sequence" wrap=wrap>
          Taille de la séquence : <b><?php echo $length; ?></b><br><br>
          Séquence : <b><?php echo $sequence; ?></b><br><br>
          Position de début du gène : <b><?php echo $start; ?></b><br><br>
