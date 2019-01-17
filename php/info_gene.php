@@ -33,6 +33,7 @@ session_start();
               </h1>
         <p>
          Taille de la séquence : <b><?php echo $length; ?></b><br><br>
+         Séquence : <b><?php echo $sequence; ?></b><br><br>
          Position de début du gène : <b><?php echo $start; ?></b><br><br>
          Position de fin du gène : <b><?php echo $stop; ?></b><br><br>
          Fonction du gène : <b><?php echo $fonction; ?></b><br><br>

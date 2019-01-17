@@ -10,7 +10,7 @@
 
       // Recupere les informations sur le gène
       $requete = $bdd -> query(
-        "select length, start, stop, fonction
+        "select length, start, stop, fonction, sequence
          from gene
          where locus = '$id'"
        );
@@ -18,6 +18,7 @@
       while ($donnees = $requete->fetch())
       {
         $length = $donnees['length'];
+        $sequence = $donnees['sequence'];
         $start = $donnees['start'];
         $stop = $donnees['stop'];
         $fonction = $donnees['fonction'];
