@@ -7,7 +7,9 @@ h1 {
 
 p {margin-left: 15px;}
 
-#sequence {
+#sequence {  
+  margin-right: 50px;
+  font-family: "Courier New", Courier, serif;
   overflow-wrap: break-word;
   word-break:break-all;}
 
